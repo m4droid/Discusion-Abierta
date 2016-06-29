@@ -1,0 +1,8 @@
+.DS_Store
+*.pyc
+*.sqlite3
+
+.idea
+
+discusion_abierta/settings.py
+static/bower_components
