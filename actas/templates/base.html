@@ -3,93 +3,31 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{% static 'bower_components/angular-material/angular-material.min.css' %}">
-  <style type="text/css">
-    .item {
-      margin: 10px 0;
-      height: 130px;
-    }
-
-    .item .container_nombre {
-      background-color: #ccc;
-      padding: 5px 5px;
-    }
-
-    .item .container_nombre .nombre {
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      background-color: #fff;
-    }
-
-    .item .container_fundamento {
-      background-color: #ccc;
-      padding: 5px 5px;
-    }
-
-    .item .container_fundamento .fundamento {
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      background-color: #fff;
-    }
-
-    .item .categoria {
-      padding: 0;
-    }
-
-    .item .categoria .md-ink-ripple {
-      left: 10px;
-    }
-
-    .item .categoria .md-label {
-      margin-left: 40px;
-    }
-
-    .item .categoria .par {
-      margin: 0;
-      padding: 12px 0;
-      background-color: #8c9eff;
-    }
-
-    .item .categoria .impar {
-      margin: 0;
-      padding: 13px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body ng-controller="ActaCtrl" ng-cloak>
-
-  <div ng-repeat="itemGroup in itemsGroups">
-    <div>{$ itemGroup.nombre $}</div>
-    <div>
-      <div layout="row">
-        <div flex="25">VALOR / PRINCIPIO</div>
-        <div flex="15">CATEGORÍA</div>
-        <div flex>FUNDAMENTO</div>
+  <div layout="column" layout-align="center">
+    <div ng-repeat="itemGroup in itemsGroups">
+      <div class="grupoitems_encabezado">
+        <div class="nombre">{$ itemGroup.nombre $}</div>
+        <div class="descripcion">{$ itemGroup.descripcion $}</div>
       </div>
-    </div>
-    <div class="item" ng-repeat="item in itemGroup.items">
-      <div layout="row">
+      <div class="grupoitems_item_encabezado" layout="row">
+        <div class="par" flex="25">VALOR / PRINCIPIO</div>
+        <div class="impar centrar_texto" flex="15">CATEGORÍA</div>
+        <div class="par" flex=60>FUNDAMENTO</div>
+      </div>
+      <div class="item" ng-repeat="item in itemGroup.items" layout="row">
         <div class="container_nombre" flex=25>
-          <div layout="column">
-            <md-input-container class="md-block nombre" flex=90>
-              <textarea ng-model="item.nombre" rows="4" md-select-on-focus flex></textarea>
-            </md-input-container>
-          </div>
+          <textarea class="nombre" ng-model="item.nombre"></textarea>
         </div>
-        <div class="categoria" flex=15>
-          <md-radio-group ng-model="item.categoria">
-            <md-radio-button value="1" class="par">Acuerdo</md-radio-button>
-            <md-radio-button value="0" class="impar">Acuerdo parcial</md-radio-button>
-            <md-radio-button value="-1" class="par">Desacuerdo</md-radio-button>
-          </md-radio-group>
-        </div>
-        <div class="container_fundamento" flex>
-          <div layout="column">
-            <md-input-container class="md-block fundamento" flex=90>
-              <textarea ng-model="item.fundamento" rows="4"></textarea>
-            </md-input-container>
-          </div>
+        <md-radio-group class="categoria" layout="column" ng-model="item.categoria" flex=15>
+          <md-radio-button value="1" class="par">Acuerdo</md-radio-button>
+          <md-radio-button value="0" class="impar">Acuerdo parcial</md-radio-button>
+          <md-radio-button value="-1" class="par">Desacuerdo</md-radio-button>
+        </md-radio-group>
+        <div class="container_fundamento" flex=60>
+          <textarea class="fundamento" ng-model="item.fundamento"></textarea>
         </div>
       </div>
     </div>
@@ -114,12 +52,28 @@
           nombre: 'VALORES Y PRINCIPIOS',
           descripcion: '¿Cuáles son los VALORES Y PRINCIPIOS más importantes que deben inspirar y dar sustento a la Constitución?',
           items: [
-            {
-              nombre: 'Item 1'
-            },
-            {
-              nombre: 'Item 2'
-            }
+            {nombre: ''}
+          ]
+        },
+        {
+          nombre: 'DERECHOS',
+          descripcion: '¿Cuáles son los DERECHOS más importantes que la Constitución debiera establecer para todas las personas?',
+          items: [
+            {nombre: ''}
+          ]
+        },
+        {
+          nombre: 'DEBERES Y RESPONSABILIDADES',
+          descripcion: '¿Cuáles son los DEBERES Y RESPONSABILIDADES más importantes que la Constitución debiera establecer para todas las personas?',
+          items: [
+            {nombre: ''}
+          ]
+        },
+        {
+          nombre: 'INSTITUCIONES',
+          descripcion: '¿Qué INSTITUCIONES debe contemplar la Constitución?',
+          items: [
+            {nombre: ''}
           ]
         }
       ];
