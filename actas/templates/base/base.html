@@ -1,0 +1,45 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es" ng-app="DiscusionAbiertaApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Discusión Abierta</title>
+
+  <link rel="stylesheet" href="{% static 'bower_components/angular-material/angular-material.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  {% block css %}{% endblock %}
+
+</head>
+<body>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2 class="title">
+        <span>Discusión Abierta</span>
+      </h2>
+      <span flex></span>
+      <md-button href="/">Inicio</md-button>
+      <md-button href="/actas">Actas</md-button>
+      <div>
+        <md-button class="md-raised" aria-label="Subir acta" href="/actas/subir">Subir acta</md-button>
+      </div>
+    </div>
+  </md-toolbar>
+
+  {% block body %}{% endblock %}
+
+  <script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
+  <script src="{% static 'bower_components/angular-aria/angular-aria.min.js' %}"></script>
+  <script src="{% static 'bower_components/angular-messages/angular-messages.min.js' %}"></script>
+  <script src="{% static 'bower_components/angular-animate/angular-animate.min.js' %}"></script>
+  <script src="{% static 'bower_components/angular-material/angular-material.min.js' %}"></script>
+
+  <script src="{% static 'js/angular/app.js' %}"></script>
+  
+  {% block js %}{% endblock %}
+
+</body>
+</html>
