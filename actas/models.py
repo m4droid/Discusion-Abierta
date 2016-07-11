@@ -48,10 +48,15 @@ class Item(models.Model):
 
 
 class Acta(models.Model):
+    fecha = models.DateTimeField()
     comuna = models.ForeignKey(Comuna)
     direccion = models.CharField(max_length=256)
-    participantes = models.ManyToManyField(User)
-    fecha = models.DateTimeField()
+
+    organizador = models.ForeignKey(User, related_name='organizador')
+    moderador = models.ForeignKey(User, related_name='moderador')
+    secretario = models.ForeignKey(User, related_name='secretario')
+    participantes = models.ManyToManyField(User, related_name='participantes')
+    memoria_historica = models.TextField()
 
 
 class ActaRespuestaItem(models.Model):
