@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block js %}
+<script src="{% static 'js/angular/controller_acta.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div layout="column" layout-align="center" ng-controller="ActaCtrl" ng-cloak>
+  <div ng-repeat="itemGroup in itemsGroups">
+    <div class="grupoitems_encabezado">
+      <div class="nombre">{$ itemGroup.nombre $}</div>
+      <div class="descripcion">{$ itemGroup.descripcion $}</div>
+    </div>
+    <div class="grupoitems_item_encabezado" layout="row">
+      <div class="par" flex="25">VALOR / PRINCIPIO</div>
+      <div class="impar centrar_texto" flex="15">CATEGORÍA</div>
+      <div class="par" flex=60>FUNDAMENTO</div>
+    </div>
+    <div class="item" ng-repeat="item in itemGroup.items" layout="row">
+      <div class="container_nombre" flex=25>
+        <textarea class="nombre" ng-model="item.nombre"></textarea>
+      </div>
+      <md-radio-group class="categoria" layout="column" ng-model="item.categoria" flex=15>
+        <md-radio-button value="1" class="par">Acuerdo</md-radio-button>
+        <md-radio-button value="0" class="impar">Acuerdo parcial</md-radio-button>
+        <md-radio-button value="-1" class="par">Desacuerdo</md-radio-button>
+      </md-radio-group>
+      <div class="container_fundamento" flex=60>
+        <textarea class="fundamento" ng-model="item.fundamento"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

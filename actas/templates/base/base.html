@@ -14,7 +14,21 @@
   {% block css %}{% endblock %}
 
 </head>
-<body ng-controller="ActaCtrl" ng-cloak>
+<body>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2 class="title">
+        <span>Discusión Abierta</span>
+      </h2>
+      <span flex></span>
+      <md-button href="/">Inicio</md-button>
+      <md-button href="/actas">Actas</md-button>
+      <div>
+        <md-button class="md-raised" aria-label="Subir acta" href="/actas/subir">Subir acta</md-button>
+      </div>
+    </div>
+  </md-toolbar>
+
   {% block body %}{% endblock %}
 
   <script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
