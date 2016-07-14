@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<script type="text/javascript" src="assets/js/jquery.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.simplemodal.js"></script>
+	<script type="text/javascript" src="assets/js/confirm.js"></script>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>Servicio de Registro Civil e Identificación</title>
+
+	<link type="text/css" href="assets/css/morpho.css" rel="stylesheet" media="screen, projection" />
+
+	<link type="text/css" href="assets/css/style.css" rel="stylesheet" media="screen, projection" />
+	<!--[if !IE]>
+        <link type="text/css" href="assets/css/style_IE.css" rel="stylesheet" media="screen, projection" />
+        <![endif]--> 
+   
+	<link type="application/rss+xml" href="http://www.gob.cl/feed/" rel="alternate" title="RSS 2.0" />
+
+	<script type="text/javascript" src="assets/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="assets/js/base.js"></script>
+
+	<script type="text/javascript" src="assets/js/jquery.colorbox-min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.featureList-1.0.js"></script>
+	<script type="text/javascript" src="assets/js/usuarios.js"></script>
+
+	<link href="assets/css/featured-list.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="assets/css/colorbox.css" type="text/css" />
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" />
+		
+			<script type="text/javascript">
+	
+	 //<![CDATA[   
+	            
+	           backToPortal= function (){
+	        	    window.location = "BloqueoMenu.xhtml";
+                        }
+	               closeBlocagePopup = function(){
+	            	   document.getElementById("close-popup").style.display = 'block';
+	                   document.getElementById("confirm-popup").style.display = 'none';
+	                   return false;
+                
+              }
+	               
+	               openBlocagePopup = function(){
+                       document.getElementById("close-popup").style.display = 'none';
+                       document.getElementById("confirm-popup").style.display = 'block';
+                       return false;
+            
+          }
+
+
+//]]>
+
+</script></head><body>
+<center>
+<div style=" min-height: 100%;">
+	<section id="main" class="default"> 
+	<table>
+	<tr><td height="800px;" style="vertical-align: top;">
+		<section id="featured"> <!-- Insertion du menu lateral -->
+
+			<table cellspacing="3" cellpadding="3">
+			<tr><td VALIGN="top">
+                <script type="text/javascript" src="assets/js/jquery.js"></script>
+                <script type="text/javascript" src="assets/js/jquery.simplemodal.js"></script>
+                <script type="text/javascript" src="assets/js/confirm.js"></script>
+                <script type="text/javascript" src="assets/js/jquery.loader.js"></script>
+                <script type="text/javascript">
+                 //<![CDATA[         
+                        $(function() {
+                                $('#buttonCall').click(
+                                                function() {
+                                                $.loader({content : "<div id='divWaiting'><img style='background:transparent;margin-bottom: 40px;' src='/usuarios-portal/pages/assets/css/images/waiting.gif' /></div>"});
+                                                                });
+                        });
+                    //]]>
+                        window.onload = window.onpageshow = function() {
+
+                                if ("false" != 'false') {
+                                        document.getElementById('actionError').click();
+                                        document.getElementById('confirm-overlay').style.display = 'block';
+                                        document.getElementById('confirm-container').style.display = 'block';
+                                        
+                                        var div_ = document.getElementById('confirm-container');
+                                        if (div_ != null) {
+                
+                                                div_.style.width = "500px";
+
+                                        }
+                                        
+                                }
+                                if ("false" != 'true') {
+                                	document.getElementById('msgInfoTable').style.display = 'none';
+                                	document.getElementById('volverTable').style.display = 'none';
+                                }
+                                //document.getElementById('form:run').value = '';
+                                //document.getElementById('form:docNumber').value = '';
+                                if (document.getElementById("jquery-loader-background") != null)
+                                        document.getElementById("jquery-loader-background").style.display = "none";
+                                if (document.getElementById("divWaiting") != null)
+                                        document.getElementById("divWaiting").style.display = "none";
+                        }
+                        jQuery(function($) {
+
+                                $(
+                                                '#confirm-dialog-error input.confirm, #confirm-dialog-error a.confirm')
+                                                .click(function(e) {
+                                                        e.preventDefault();
+                                                        confirm("", function() {
+                                                        }, '#confirmError');
+                                                });
+                        });
+
+                        function checkFields() {
+                                var run = checkRUN('form:run');
+                                var docNumber = checkSerialNumber('form:docNumber');
+                                var docType = checkSelectField('form:selectDocType');
+
+                                if (!(run != false || docType != false || docNumber != false)) {
+                                        document.getElementById("zoneErreur").style.display = 'none';
+                                        document.getElementById('form:buttonHidden').click();
+                                        document.getElementById('buttonCall').click();
+                                } else {
+                                        document.getElementById("zoneErreur").style.display = 'block';
+
+                                }
+                        }
+                </script>
+</td><td VALIGN="top" align="left">
+	<div id="content" class="divContent">
+		<!--
+                        Header du corps de la page 
+            -->
+
+
+
+             <aside class="home">
+                <h2>
+                        <span style="margin-left: 30px;">Consulta de estado de documento de identidad </span>
+                </h2>
+                </aside>
+
+		<!--
+                        Corps de la page 
+            -->
+                <section class="body">
+<form id="form" name="form" method="post" action="/usuarios-portal/pages/DocumentRequestStatus.xhtml;jsessionid=qwer.tomcat3" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="form" value="form" />
+
+                        <div style="padding-top: 5px; text-align: left">
+                                <div id="zoneErreur" style="display: none; color: red;">* Atención : los campos destacados son incorrectos o están incompletos. <br/> modifíquelos y vuelva a intentarlo.
+                                </div>
+                                <div style="padding-top: 10px;">
+                                        <table style="width:700px;padding-right: 10px;" cellpadding="5">
+                                                
+                                                <tr>
+                                                        <td style="padding-left: 60px;"><span class="generalText">RUN (Ej: 12345678-K) * </span>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td><input id="form:run" type="text" name="form:run" value="1-9" maxlength="11" style="width: 295px;" />
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td style="padding-left: 60px;"><span class="generalText">Tipo de documento * </span></td>
+                                                        <td>:</td>
+                                                        <td><select id="form:selectDocType" name="form:selectDocType" size="1" style="width: 300px;z-index: -1">	<option value="0">Seleccionar el tipo de documento</option>
+	<option value="CEDULA" selected="selected">Cédula de identidad chilena</option>
+	<option value="CEDULA_EXT">Cédula de identidad a extranjeros</option>
+	<option value="PASAPORTE_PG">Pasaporte</option>
+	<option value="PASAPORTE_DIPLOMATICO">Pasaporte diplomático</option>
+	<option value="PASAPORTE_OFICIAL">Pasaporte oficial</option>
+</select>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td style="padding-left: 60px;"><span class="generalText">N° Documento/Serie/Cuadernillo</span>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td><input id="form:docNumber" type="text" name="form:docNumber" value="A" maxlength="10" style="width: 295px;" /></td>
+                                                        <td colspan="3" style="margin-top: 20px;padding-bottom: 15px;"><a href="https://www.srcei.cl/PortalSIDIV/ayuda_documento.html"><span class="volver" style="font-size: 12px;">Ayuda</span></a></td>                
+                                                </tr>
+                                        </table>
+                                </div>
+                                <table id="msgInfoTable" style="padding-top: 20px">
+                                        <tr>
+                                                <td style="padding-left: 390px"><span class="volver"> * Todos los datos son obligatorios.</span>
+                                                </td>
+                                                <td>
+                                                        <table id="volverTable" height="30" width="100" cellspacing="0" cellpadding="5" bordercolor="#DBDBDB" border="1" bgcolor="#F3F3F3">
+                                                                <tr>
+                                                                        <td valign="middle" align="center"><a href="javascript:void(0);" onclick="javascript:checkFields();return false;" class="volver">Aceptar
+
+
+                                                                        </a><input id="form:buttonHidden" type="submit" name="form:buttonHidden" value="" style="display: none" />
+
+                                                                        </td>
+                                                                </tr>
+                                                        </table></td>
+                                        </tr>
+                                </table>
+
+
+                        </div>
+                        <!-- confirm popup error -->
+                        <div id="confirm-dialog-error" style="padding-right: 50px; text-align: right;">
+
+                                <input id="actionError" type="button" name="confirm" class="confirm" style="display: none" />
+                        </div>
+                        <input type="button" style="display: none" id="buttonCall" />
+                        <!-- modal contentEror --><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="asdf" autocomplete="off" />
+</form> </section>
+
+                <aside class="home" style="background: transparent;">
+                <h2>
+                        <span style="margin-left: 30px;">Resultado de la consulta</span>
+                </h2>
+                </aside>
+
+                <section class="body">
+
+                <form id="section2">
+                        <div style="padding-top: 5px; text-align: left">
+                                <div><table id="tableResult" class="tableResult">
+<tbody>
+<tr>
+<td class="setWidthOfFirstColumn">ESTADO</td>
+<td class="setWidthOfSecondColumn">Vigente</td>
+</tr>
+</tbody>
+</table>
+
+                                </div>
+
+                        </div>
+                </form>
+
+
+                </section>
+
+
+	</div>
+</td></tr></table>
+
+	</section>
+	</td></tr>
+	</table>
+	</section>
+	
+</div>
+</center></body>
+</html>
