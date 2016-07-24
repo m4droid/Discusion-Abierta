@@ -1,0 +1,2770 @@
+[
+	{
+		"pk": 1101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 11,
+			"nombre": "Iquique"
+		}
+	},
+	{
+		"pk": 1107,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 11,
+			"nombre": "Alto Hospicio"
+		}
+	},
+	{
+		"pk": 1401,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 14,
+			"nombre": "Pozo Almonte"
+		}
+	},
+	{
+		"pk": 1402,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 14,
+			"nombre": "Camiña"
+		}
+	},
+	{
+		"pk": 1403,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 14,
+			"nombre": "Colchane"
+		}
+	},
+	{
+		"pk": 1404,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 14,
+			"nombre": "Huara"
+		}
+	},
+	{
+		"pk": 1405,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 14,
+			"nombre": "Pica"
+		}
+	},
+	{
+		"pk": 2101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 21,
+			"nombre": "Antofagasta"
+		}
+	},
+	{
+		"pk": 2102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 21,
+			"nombre": "Mejillones"
+		}
+	},
+	{
+		"pk": 2103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 21,
+			"nombre": "Sierra Gorda"
+		}
+	},
+	{
+		"pk": 2104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 21,
+			"nombre": "Taltal"
+		}
+	},
+	{
+		"pk": 2201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 22,
+			"nombre": "Calama"
+		}
+	},
+	{
+		"pk": 2202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 22,
+			"nombre": "Ollagüe"
+		}
+	},
+	{
+		"pk": 2203,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 22,
+			"nombre": "San Pedro de Atacama"
+		}
+	},
+	{
+		"pk": 2301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 23,
+			"nombre": "Tocopilla"
+		}
+	},
+	{
+		"pk": 2302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 23,
+			"nombre": "María Elena"
+		}
+	},
+	{
+		"pk": 3101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 31,
+			"nombre": "Copiapó"
+		}
+	},
+	{
+		"pk": 3102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 31,
+			"nombre": "Caldera"
+		}
+	},
+	{
+		"pk": 3103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 31,
+			"nombre": "Tierra Amarilla"
+		}
+	},
+	{
+		"pk": 3201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 32,
+			"nombre": "Chañaral"
+		}
+	},
+	{
+		"pk": 3202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 32,
+			"nombre": "Diego de Almagro"
+		}
+	},
+	{
+		"pk": 3301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 33,
+			"nombre": "Vallenar"
+		}
+	},
+	{
+		"pk": 3302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 33,
+			"nombre": "Alto del Carmen"
+		}
+	},
+	{
+		"pk": 3303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 33,
+			"nombre": "Freirina"
+		}
+	},
+	{
+		"pk": 3304,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 33,
+			"nombre": "Huasco"
+		}
+	},
+	{
+		"pk": 4101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 41,
+			"nombre": "La Serena"
+		}
+	},
+	{
+		"pk": 4102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 41,
+			"nombre": "Coquimbo"
+		}
+	},
+	{
+		"pk": 4103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 41,
+			"nombre": "Andacollo"
+		}
+	},
+	{
+		"pk": 4104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 41,
+			"nombre": "La Higuera"
+		}
+	},
+	{
+		"pk": 4105,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 41,
+			"nombre": "Paiguano"
+		}
+	},
+	{
+		"pk": 4106,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 41,
+			"nombre": "Vicuña"
+		}
+	},
+	{
+		"pk": 4201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 42,
+			"nombre": "Illapel"
+		}
+	},
+	{
+		"pk": 4202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 42,
+			"nombre": "Canela"
+		}
+	},
+	{
+		"pk": 4203,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 42,
+			"nombre": "Los Vilos"
+		}
+	},
+	{
+		"pk": 4204,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 42,
+			"nombre": "Salamanca"
+		}
+	},
+	{
+		"pk": 4301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 43,
+			"nombre": "Ovalle"
+		}
+	},
+	{
+		"pk": 4302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 43,
+			"nombre": "Combarbalá"
+		}
+	},
+	{
+		"pk": 4303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 43,
+			"nombre": "Monte Patria"
+		}
+	},
+	{
+		"pk": 4304,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 43,
+			"nombre": "Punitaqui"
+		}
+	},
+	{
+		"pk": 4305,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 43,
+			"nombre": "Río Hurtado"
+		}
+	},
+	{
+		"pk": 5101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 51,
+			"nombre": "Valparaíso"
+		}
+	},
+	{
+		"pk": 5102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 51,
+			"nombre": "Casablanca"
+		}
+	},
+	{
+		"pk": 5103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 51,
+			"nombre": "Concón"
+		}
+	},
+	{
+		"pk": 5104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 51,
+			"nombre": "Juan Fernández"
+		}
+	},
+	{
+		"pk": 5105,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 51,
+			"nombre": "Puchuncaví"
+		}
+	},
+	{
+		"pk": 5107,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 51,
+			"nombre": "Quintero"
+		}
+	},
+	{
+		"pk": 5109,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 51,
+			"nombre": "Viña del Mar"
+		}
+	},
+	{
+		"pk": 5201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 52,
+			"nombre": "Isla de Pascua"
+		}
+	},
+	{
+		"pk": 5301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 53,
+			"nombre": "Los Andes"
+		}
+	},
+	{
+		"pk": 5302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 53,
+			"nombre": "Calle Larga"
+		}
+	},
+	{
+		"pk": 5303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 53,
+			"nombre": "Riconada"
+		}
+	},
+	{
+		"pk": 5304,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 53,
+			"nombre": "San Esteban"
+		}
+	},
+	{
+		"pk": 5401,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 54,
+			"nombre": "La Ligua"
+		}
+	},
+	{
+		"pk": 5402,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 54,
+			"nombre": "Cabildo"
+		}
+	},
+	{
+		"pk": 5403,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 54,
+			"nombre": "Papudo"
+		}
+	},
+	{
+		"pk": 5404,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 54,
+			"nombre": "Petorca"
+		}
+	},
+	{
+		"pk": 5405,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 54,
+			"nombre": "Zapallar"
+		}
+	},
+	{
+		"pk": 5501,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 55,
+			"nombre": "Quillota"
+		}
+	},
+	{
+		"pk": 5502,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 55,
+			"nombre": "Calera"
+		}
+	},
+	{
+		"pk": 5503,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 55,
+			"nombre": "Hijuelas"
+		}
+	},
+	{
+		"pk": 5504,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 55,
+			"nombre": "La Cruz"
+		}
+	},
+	{
+		"pk": 5506,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 55,
+			"nombre": "Nogales"
+		}
+	},
+	{
+		"pk": 5601,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 56,
+			"nombre": "San Antonio"
+		}
+	},
+	{
+		"pk": 5602,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 56,
+			"nombre": "Algarrobo"
+		}
+	},
+	{
+		"pk": 5603,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 56,
+			"nombre": "Cartagena"
+		}
+	},
+	{
+		"pk": 5604,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 56,
+			"nombre": "El Quisco"
+		}
+	},
+	{
+		"pk": 5605,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 56,
+			"nombre": "El Tabo"
+		}
+	},
+	{
+		"pk": 5606,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 56,
+			"nombre": "Santo Domingo"
+		}
+	},
+	{
+		"pk": 5701,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 57,
+			"nombre": "San Felipe"
+		}
+	},
+	{
+		"pk": 5702,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 57,
+			"nombre": "Catemu"
+		}
+	},
+	{
+		"pk": 5703,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 57,
+			"nombre": "Llaillay"
+		}
+	},
+	{
+		"pk": 5704,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 57,
+			"nombre": "Panquehue"
+		}
+	},
+	{
+		"pk": 5705,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 57,
+			"nombre": "Putaendo"
+		}
+	},
+	{
+		"pk": 5706,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 57,
+			"nombre": "Santa María"
+		}
+	},
+	{
+		"pk": 5801,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 58,
+			"nombre": "Quilpué"
+		}
+	},
+	{
+		"pk": 5802,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 58,
+			"nombre": "Limache"
+		}
+	},
+	{
+		"pk": 5803,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 58,
+			"nombre": "Olmué"
+		}
+	},
+	{
+		"pk": 5804,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 58,
+			"nombre": "Villa Alemana"
+		}
+	},
+	{
+		"pk": 6101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Rancagua"
+		}
+	},
+	{
+		"pk": 6102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Codegua"
+		}
+	},
+	{
+		"pk": 6103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Coinco"
+		}
+	},
+	{
+		"pk": 6104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Coltauco"
+		}
+	},
+	{
+		"pk": 6105,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Doñihue"
+		}
+	},
+	{
+		"pk": 6106,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Graneros"
+		}
+	},
+	{
+		"pk": 6107,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Las Cabras"
+		}
+	},
+	{
+		"pk": 6108,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Machalí"
+		}
+	},
+	{
+		"pk": 6109,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Malloa"
+		}
+	},
+	{
+		"pk": 6110,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Mostazal"
+		}
+	},
+	{
+		"pk": 6111,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Olivar"
+		}
+	},
+	{
+		"pk": 6112,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Peumo"
+		}
+	},
+	{
+		"pk": 6113,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Pichidegua"
+		}
+	},
+	{
+		"pk": 6114,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Quinta de Tilcoco"
+		}
+	},
+	{
+		"pk": 6115,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Rengo"
+		}
+	},
+	{
+		"pk": 6116,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "Requínoa"
+		}
+	},
+	{
+		"pk": 6117,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 61,
+			"nombre": "San Vicente"
+		}
+	},
+	{
+		"pk": 6201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 62,
+			"nombre": "Pichilemu"
+		}
+	},
+	{
+		"pk": 6202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 62,
+			"nombre": "La Estrella"
+		}
+	},
+	{
+		"pk": 6203,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 62,
+			"nombre": "Litueche"
+		}
+	},
+	{
+		"pk": 6204,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 62,
+			"nombre": "Marichihue"
+		}
+	},
+	{
+		"pk": 6205,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 62,
+			"nombre": "Navidad"
+		}
+	},
+	{
+		"pk": 6206,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 62,
+			"nombre": "Paredones"
+		}
+	},
+	{
+		"pk": 6301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "San Fernando"
+		}
+	},
+	{
+		"pk": 6302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "Chépica"
+		}
+	},
+	{
+		"pk": 6303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "Chimbarongo"
+		}
+	},
+	{
+		"pk": 6304,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "Lolol"
+		}
+	},
+	{
+		"pk": 6305,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "Nancagua"
+		}
+	},
+	{
+		"pk": 6306,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "Palmilla"
+		}
+	},
+	{
+		"pk": 6307,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "Peralillo"
+		}
+	},
+	{
+		"pk": 6308,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "Placilla"
+		}
+	},
+	{
+		"pk": 6309,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "Pumanque"
+		}
+	},
+	{
+		"pk": 6310,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 63,
+			"nombre": "Santa Cruz"
+		}
+	},
+	{
+		"pk": 7101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "Talca"
+		}
+	},
+	{
+		"pk": 7102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "Constitución"
+		}
+	},
+	{
+		"pk": 7103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "Curepto"
+		}
+	},
+	{
+		"pk": 7104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "Empedrado"
+		}
+	},
+	{
+		"pk": 7105,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "Maule"
+		}
+	},
+	{
+		"pk": 7106,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "Pelarco"
+		}
+	},
+	{
+		"pk": 7107,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "Pencahue"
+		}
+	},
+	{
+		"pk": 7108,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "Río Claro"
+		}
+	},
+	{
+		"pk": 7109,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "San Clemente"
+		}
+	},
+	{
+		"pk": 7110,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 71,
+			"nombre": "San Rafael"
+		}
+	},
+	{
+		"pk": 7201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 72,
+			"nombre": "Cauquenes"
+		}
+	},
+	{
+		"pk": 7202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 72,
+			"nombre": "Chanco"
+		}
+	},
+	{
+		"pk": 7203,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 72,
+			"nombre": "Pelluhue"
+		}
+	},
+	{
+		"pk": 7301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 73,
+			"nombre": "Curicó"
+		}
+	},
+	{
+		"pk": 7302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 73,
+			"nombre": "Hualañé"
+		}
+	},
+	{
+		"pk": 7303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 73,
+			"nombre": "Licantén"
+		}
+	},
+	{
+		"pk": 7304,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 73,
+			"nombre": "Molina"
+		}
+	},
+	{
+		"pk": 7305,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 73,
+			"nombre": "Rauco"
+		}
+	},
+	{
+		"pk": 7306,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 73,
+			"nombre": "Romeral"
+		}
+	},
+	{
+		"pk": 7307,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 73,
+			"nombre": "Sagrada Familia"
+		}
+	},
+	{
+		"pk": 7308,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 73,
+			"nombre": "Teno"
+		}
+	},
+	{
+		"pk": 7309,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 73,
+			"nombre": "Vichuquén"
+		}
+	},
+	{
+		"pk": 7401,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 74,
+			"nombre": "Linares"
+		}
+	},
+	{
+		"pk": 7402,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 74,
+			"nombre": "Colbún"
+		}
+	},
+	{
+		"pk": 7403,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 74,
+			"nombre": "Longaví"
+		}
+	},
+	{
+		"pk": 7404,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 74,
+			"nombre": "Parral"
+		}
+	},
+	{
+		"pk": 7405,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 74,
+			"nombre": "Retiro"
+		}
+	},
+	{
+		"pk": 7406,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 74,
+			"nombre": "San Javier"
+		}
+	},
+	{
+		"pk": 7407,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 74,
+			"nombre": "Villa Alegre"
+		}
+	},
+	{
+		"pk": 7408,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 74,
+			"nombre": "Yerbas Buenas"
+		}
+	},
+	{
+		"pk": 8101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Concepción"
+		}
+	},
+	{
+		"pk": 8102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Coronel"
+		}
+	},
+	{
+		"pk": 8103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Chiguayante"
+		}
+	},
+	{
+		"pk": 8104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Florida"
+		}
+	},
+	{
+		"pk": 8105,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Hualqui"
+		}
+	},
+	{
+		"pk": 8106,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Lota"
+		}
+	},
+	{
+		"pk": 8107,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Penco"
+		}
+	},
+	{
+		"pk": 8108,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "San Pedro de la Paz"
+		}
+	},
+	{
+		"pk": 8109,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Santa Juana"
+		}
+	},
+	{
+		"pk": 8110,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Talcahuano"
+		}
+	},
+	{
+		"pk": 8111,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Tomé"
+		}
+	},
+	{
+		"pk": 8112,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 81,
+			"nombre": "Hualpén"
+		}
+	},
+	{
+		"pk": 8201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 82,
+			"nombre": "Lebu"
+		}
+	},
+	{
+		"pk": 8202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 82,
+			"nombre": "Arauco"
+		}
+	},
+	{
+		"pk": 8203,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 82,
+			"nombre": "Cañete"
+		}
+	},
+	{
+		"pk": 8204,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 82,
+			"nombre": "Contulmo"
+		}
+	},
+	{
+		"pk": 8205,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 82,
+			"nombre": "Curanilahue"
+		}
+	},
+	{
+		"pk": 8206,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 82,
+			"nombre": "Los Álamos"
+		}
+	},
+	{
+		"pk": 8207,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 82,
+			"nombre": "Tirúa"
+		}
+	},
+	{
+		"pk": 8301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Los Ángeles"
+		}
+	},
+	{
+		"pk": 8302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Antuco"
+		}
+	},
+	{
+		"pk": 8303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Cabrero"
+		}
+	},
+	{
+		"pk": 8304,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Laja"
+		}
+	},
+	{
+		"pk": 8305,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Mulchén"
+		}
+	},
+	{
+		"pk": 8306,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Nacimiento"
+		}
+	},
+	{
+		"pk": 8307,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Negrete"
+		}
+	},
+	{
+		"pk": 8308,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Quilaco"
+		}
+	},
+	{
+		"pk": 8309,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Quilleco"
+		}
+	},
+	{
+		"pk": 8310,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "San Rosendo"
+		}
+	},
+	{
+		"pk": 8311,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Santa Bárbara"
+		}
+	},
+	{
+		"pk": 8312,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Tucapel"
+		}
+	},
+	{
+		"pk": 8313,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Yumbel"
+		}
+	},
+	{
+		"pk": 8314,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 83,
+			"nombre": "Alto Biobío"
+		}
+	},
+	{
+		"pk": 8401,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Chillán"
+		}
+	},
+	{
+		"pk": 8402,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Bulnes"
+		}
+	},
+	{
+		"pk": 8403,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Cobquecura"
+		}
+	},
+	{
+		"pk": 8404,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Coelemu"
+		}
+	},
+	{
+		"pk": 8405,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Coihueco"
+		}
+	},
+	{
+		"pk": 8406,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Chillán Viejo"
+		}
+	},
+	{
+		"pk": 8407,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "El Carmen"
+		}
+	},
+	{
+		"pk": 8408,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Ninhue"
+		}
+	},
+	{
+		"pk": 8409,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Ñiquén"
+		}
+	},
+	{
+		"pk": 8410,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Pemuco"
+		}
+	},
+	{
+		"pk": 8411,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Pinto"
+		}
+	},
+	{
+		"pk": 8412,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Portezuelo"
+		}
+	},
+	{
+		"pk": 8413,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Quillón"
+		}
+	},
+	{
+		"pk": 8414,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Quirihue"
+		}
+	},
+	{
+		"pk": 8415,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Ránquil"
+		}
+	},
+	{
+		"pk": 8416,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "San Carlos"
+		}
+	},
+	{
+		"pk": 8417,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "San Fabián"
+		}
+	},
+	{
+		"pk": 8418,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "San Ignacio"
+		}
+	},
+	{
+		"pk": 8419,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "San Nicolás"
+		}
+	},
+	{
+		"pk": 8420,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Treguaco"
+		}
+	},
+	{
+		"pk": 8421,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 84,
+			"nombre": "Yungay"
+		}
+	},
+	{
+		"pk": 9101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Temuco"
+		}
+	},
+	{
+		"pk": 9102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Carahu"
+		}
+	},
+	{
+		"pk": 9103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Cunco"
+		}
+	},
+	{
+		"pk": 9104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Curarrehue"
+		}
+	},
+	{
+		"pk": 9105,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Freire"
+		}
+	},
+	{
+		"pk": 9106,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Galvarin"
+		}
+	},
+	{
+		"pk": 9107,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Gorbea"
+		}
+	},
+	{
+		"pk": 9108,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Lautaro"
+		}
+	},
+	{
+		"pk": 9109,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Loncoche"
+		}
+	},
+	{
+		"pk": 9110,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Melipeuco"
+		}
+	},
+	{
+		"pk": 9111,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Nueva Imperial"
+		}
+	},
+	{
+		"pk": 9112,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Padre las Casa"
+		}
+	},
+	{
+		"pk": 9113,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Perquenco"
+		}
+	},
+	{
+		"pk": 9114,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Pitrufquén"
+		}
+	},
+	{
+		"pk": 9115,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Pucó"
+		}
+	},
+	{
+		"pk": 9116,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Saavedra"
+		}
+	},
+	{
+		"pk": 9117,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Teodoro Schmid"
+		}
+	},
+	{
+		"pk": 9118,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Toltén"
+		}
+	},
+	{
+		"pk": 9119,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Vilcún"
+		}
+	},
+	{
+		"pk": 9120,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Villarrica"
+		}
+	},
+	{
+		"pk": 9121,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 91,
+			"nombre": "Cholchol"
+		}
+	},
+	{
+		"pk": 9201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Angol"
+		}
+	},
+	{
+		"pk": 9202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Collipulli"
+		}
+	},
+	{
+		"pk": 9203,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Curacautín"
+		}
+	},
+	{
+		"pk": 9204,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Ercilla"
+		}
+	},
+	{
+		"pk": 9205,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Lonquimay"
+		}
+	},
+	{
+		"pk": 9206,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Los Sauces"
+		}
+	},
+	{
+		"pk": 9207,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Lumaco"
+		}
+	},
+	{
+		"pk": 9208,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Purén"
+		}
+	},
+	{
+		"pk": 9209,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Renaico"
+		}
+	},
+	{
+		"pk": 9210,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Traiguén"
+		}
+	},
+	{
+		"pk": 9211,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 92,
+			"nombre": "Victoria"
+		}
+	},
+	{
+		"pk": 10101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 101,
+			"nombre": "Puerto Montt"
+		}
+	},
+	{
+		"pk": 10102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 101,
+			"nombre": "Calbuco"
+		}
+	},
+	{
+		"pk": 10103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 101,
+			"nombre": "Cochamó"
+		}
+	},
+	{
+		"pk": 10104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 101,
+			"nombre": "Fresia"
+		}
+	},
+	{
+		"pk": 10105,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 101,
+			"nombre": "Frutillar"
+		}
+	},
+	{
+		"pk": 10106,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 101,
+			"nombre": "Los Muermos"
+		}
+	},
+	{
+		"pk": 10107,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 101,
+			"nombre": "Llanquihue"
+		}
+	},
+	{
+		"pk": 10108,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 101,
+			"nombre": "Maullín"
+		}
+	},
+	{
+		"pk": 10109,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 101,
+			"nombre": "Puerto Varas"
+		}
+	},
+	{
+		"pk": 10201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Castro"
+		}
+	},
+	{
+		"pk": 10202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Ancud"
+		}
+	},
+	{
+		"pk": 10203,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Chonchi"
+		}
+	},
+	{
+		"pk": 10204,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Curaco de Vélez"
+		}
+	},
+	{
+		"pk": 10205,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Dalcahue"
+		}
+	},
+	{
+		"pk": 10206,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Puqueldón"
+		}
+	},
+	{
+		"pk": 10207,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Queilén"
+		}
+	},
+	{
+		"pk": 10208,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Quellón"
+		}
+	},
+	{
+		"pk": 10209,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Quemchi"
+		}
+	},
+	{
+		"pk": 10210,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 102,
+			"nombre": "Quinchao"
+		}
+	},
+	{
+		"pk": 10301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 103,
+			"nombre": "Osorno"
+		}
+	},
+	{
+		"pk": 10302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 103,
+			"nombre": "Puerto Octay"
+		}
+	},
+	{
+		"pk": 10303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 103,
+			"nombre": "Purranque"
+		}
+	},
+	{
+		"pk": 10304,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 103,
+			"nombre": "Puyehue"
+		}
+	},
+	{
+		"pk": 10305,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 103,
+			"nombre": "Río Negro"
+		}
+	},
+	{
+		"pk": 10306,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 103,
+			"nombre": "San Juan de la Costa"
+		}
+	},
+	{
+		"pk": 10307,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 103,
+			"nombre": "San Pablo"
+		}
+	},
+	{
+		"pk": 10401,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 104,
+			"nombre": "Chaitén"
+		}
+	},
+	{
+		"pk": 10402,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 104,
+			"nombre": "Futaleufú"
+		}
+	},
+	{
+		"pk": 10403,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 104,
+			"nombre": "Hualaihué"
+		}
+	},
+	{
+		"pk": 10404,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 104,
+			"nombre": "Palena"
+		}
+	},
+	{
+		"pk": 11101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 111,
+			"nombre": "Coihaique"
+		}
+	},
+	{
+		"pk": 11102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 111,
+			"nombre": "Lago Verde"
+		}
+	},
+	{
+		"pk": 11201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 112,
+			"nombre": "Aisén"
+		}
+	},
+	{
+		"pk": 11202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 112,
+			"nombre": "Cisnes"
+		}
+	},
+	{
+		"pk": 11203,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 112,
+			"nombre": "Guaitecas"
+		}
+	},
+	{
+		"pk": 11301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 113,
+			"nombre": "Cochrane"
+		}
+	},
+	{
+		"pk": 11302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 113,
+			"nombre": "O’Higgins"
+		}
+	},
+	{
+		"pk": 11303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 113,
+			"nombre": "Tortel"
+		}
+	},
+	{
+		"pk": 11401,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 114,
+			"nombre": "Chile Chico"
+		}
+	},
+	{
+		"pk": 11402,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 114,
+			"nombre": "Río Ibáñez"
+		}
+	},
+	{
+		"pk": 12101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 121,
+			"nombre": "Punta Arenas"
+		}
+	},
+	{
+		"pk": 12102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 121,
+			"nombre": "Laguna Blanca"
+		}
+	},
+	{
+		"pk": 12103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 121,
+			"nombre": "Río Verde"
+		}
+	},
+	{
+		"pk": 12104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 121,
+			"nombre": "San Gregorio"
+		}
+	},
+	{
+		"pk": 12201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 122,
+			"nombre": "Cabo de Hornos (Ex. Navarino)"
+		}
+	},
+	{
+		"pk": 12202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 122,
+			"nombre": "Antártica"
+		}
+	},
+	{
+		"pk": 12301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 123,
+			"nombre": "Porvenir"
+		}
+	},
+	{
+		"pk": 12302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 123,
+			"nombre": "Primavera"
+		}
+	},
+	{
+		"pk": 12303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 123,
+			"nombre": "Timaukel"
+		}
+	},
+	{
+		"pk": 12401,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 124,
+			"nombre": "Natales"
+		}
+	},
+	{
+		"pk": 12402,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 124,
+			"nombre": "Torres del Paine"
+		}
+	},
+	{
+		"pk": 13101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Santiago"
+		}
+	},
+	{
+		"pk": 13102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Cerrillos"
+		}
+	},
+	{
+		"pk": 13103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Cerro Navia"
+		}
+	},
+	{
+		"pk": 13104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Conchalí"
+		}
+	},
+	{
+		"pk": 13105,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "El Bosque"
+		}
+	},
+	{
+		"pk": 13106,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Estación Central"
+		}
+	},
+	{
+		"pk": 13107,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Huechuraba"
+		}
+	},
+	{
+		"pk": 13108,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Independencia"
+		}
+	},
+	{
+		"pk": 13109,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "La Cisterna"
+		}
+	},
+	{
+		"pk": 13110,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "La Florida"
+		}
+	},
+	{
+		"pk": 13111,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "La Granja"
+		}
+	},
+	{
+		"pk": 13112,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "La Pintana"
+		}
+	},
+	{
+		"pk": 13113,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "La Reina"
+		}
+	},
+	{
+		"pk": 13114,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Las Condes"
+		}
+	},
+	{
+		"pk": 13115,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Lo Barnechea"
+		}
+	},
+	{
+		"pk": 13116,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Lo Espejo"
+		}
+	},
+	{
+		"pk": 13117,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Lo Prado"
+		}
+	},
+	{
+		"pk": 13118,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Macul"
+		}
+	},
+	{
+		"pk": 13119,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Maipú"
+		}
+	},
+	{
+		"pk": 13120,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Ñuñoa"
+		}
+	},
+	{
+		"pk": 13121,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Pedro Aguirre Cerda"
+		}
+	},
+	{
+		"pk": 13122,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Peñalolén"
+		}
+	},
+	{
+		"pk": 13123,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Providencia"
+		}
+	},
+	{
+		"pk": 13124,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Pudahuel"
+		}
+	},
+	{
+		"pk": 13125,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Quilicura"
+		}
+	},
+	{
+		"pk": 13126,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Quinta Normal"
+		}
+	},
+	{
+		"pk": 13127,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Recoleta"
+		}
+	},
+	{
+		"pk": 13128,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Renca"
+		}
+	},
+	{
+		"pk": 13129,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "San Joaquín"
+		}
+	},
+	{
+		"pk": 13130,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "San Miguel"
+		}
+	},
+	{
+		"pk": 13131,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "San Ramón"
+		}
+	},
+	{
+		"pk": 13132,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 131,
+			"nombre": "Vitacura"
+		}
+	},
+	{
+		"pk": 13201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 132,
+			"nombre": "Puente Alto"
+		}
+	},
+	{
+		"pk": 13202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 132,
+			"nombre": "Pirque"
+		}
+	},
+	{
+		"pk": 13203,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 132,
+			"nombre": "San José de Maipo"
+		}
+	},
+	{
+		"pk": 13301,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 133,
+			"nombre": "Colina"
+		}
+	},
+	{
+		"pk": 13302,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 133,
+			"nombre": "Lampa"
+		}
+	},
+	{
+		"pk": 13303,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 133,
+			"nombre": "Tiltil"
+		}
+	},
+	{
+		"pk": 13401,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 134,
+			"nombre": "San Bernardo"
+		}
+	},
+	{
+		"pk": 13402,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 134,
+			"nombre": "Buin"
+		}
+	},
+	{
+		"pk": 13403,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 134,
+			"nombre": "Calera de Tango"
+		}
+	},
+	{
+		"pk": 13404,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 134,
+			"nombre": "Paine"
+		}
+	},
+	{
+		"pk": 13501,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 135,
+			"nombre": "Melipilla"
+		}
+	},
+	{
+		"pk": 13502,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 135,
+			"nombre": "Alhué"
+		}
+	},
+	{
+		"pk": 13503,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 135,
+			"nombre": "Curacaví"
+		}
+	},
+	{
+		"pk": 13504,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 135,
+			"nombre": "María Pinto"
+		}
+	},
+	{
+		"pk": 13505,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 135,
+			"nombre": "San Pedro"
+		}
+	},
+	{
+		"pk": 13601,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 136,
+			"nombre": "Talagante"
+		}
+	},
+	{
+		"pk": 13602,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 136,
+			"nombre": "El Monte"
+		}
+	},
+	{
+		"pk": 13603,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 136,
+			"nombre": "Isla de Maipo"
+		}
+	},
+	{
+		"pk": 13604,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 136,
+			"nombre": "Padre Hurtado"
+		}
+	},
+	{
+		"pk": 13605,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 136,
+			"nombre": "Peñaflor"
+		}
+	},
+	{
+		"pk": 14101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 141,
+			"nombre": "Valdivia"
+		}
+	},
+	{
+		"pk": 14102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 141,
+			"nombre": "Corral"
+		}
+	},
+	{
+		"pk": 14103,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 141,
+			"nombre": "Lanco"
+		}
+	},
+	{
+		"pk": 14104,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 141,
+			"nombre": "Los Lagos"
+		}
+	},
+	{
+		"pk": 14105,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 141,
+			"nombre": "Máfil"
+		}
+	},
+	{
+		"pk": 14106,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 141,
+			"nombre": "Mariquina"
+		}
+	},
+	{
+		"pk": 14107,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 141,
+			"nombre": "Paillaco"
+		}
+	},
+	{
+		"pk": 14108,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 141,
+			"nombre": "Panguipulli"
+		}
+	},
+	{
+		"pk": 14201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 142,
+			"nombre": "La Unión"
+		}
+	},
+	{
+		"pk": 14201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 142,
+			"nombre": "Futrono"
+		}
+	},
+	{
+		"pk": 14201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 142,
+			"nombre": "Lago Ranco"
+		}
+	},
+	{
+		"pk": 14201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 142,
+			"nombre": "Río Bueno"
+		}
+	},
+	{
+		"pk": 15101,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 151,
+			"nombre": "Arica"
+		}
+	},
+	{
+		"pk": 15102,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 151,
+			"nombre": "Camarones"
+		}
+	},
+	{
+		"pk": 15201,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 152,
+			"nombre": "Putre"
+		}
+	},
+	{
+		"pk": 15202,
+		"model": "actas.comuna",
+		"fields": {
+			"provincia": 152,
+			"nombre": "General Lagos"
+		}
+	}
+]

@@ -1,9 +1,13 @@
+.sin_margen {
+  margin: 0;
+}
+
 .centrar_texto {
   text-align: center;
 }
 
 .item {
-  margin: 5px 0;
+  /*margin: 5px 0;*/
   height: 110px;
 }
 
@@ -19,7 +23,7 @@
 .item .container_nombre .nombre {
   margin: 0;
   padding: 5px;
-  width: 100%;
+  width: calc(100% - 10px);
   height: 90%;
   resize: none;
   background-color: #fff;
@@ -34,7 +38,7 @@
 .item .container_fundamento .fundamento {
   margin: 0;
   padding: 5px;
-  width: 100%;
+  width: calc(100% - 10px);
   height: 90%;
   resize: none;
   background-color: #fff;
@@ -56,15 +60,18 @@
 
 .item .categoria .par {
   margin: 0;
-  padding: 10px 14px;
+  padding: 6px 14px;
   background-color: #5C6BC0;
   color: #fff;
+  height: calc(100% / 3);
 }
 
 .item .categoria .impar {
   margin: 0;
-  padding: 10px 14px;
+  padding: 6px 14px;
   color: #283593;
+  background-color: #fff;
+  height: calc(100% / 3);
 }
 
 .grupoitems_item_encabezado {
@@ -88,7 +95,7 @@
 }
 
 .grupoitems_encabezado {
-  margin: 5px 0;
+  /*margin: 5px 0;*/
   padding: 10px;
   background-color: #C5CAE9;
   color: #283593;
@@ -96,8 +103,10 @@
 
 .grupoitems_encabezado .nombre {
   font-weight: 500;
+  font-size: 0.85em;
 }
 
 .grupoitems_encabezado .descripcion {
   font-weight: 200;
+  font-size: 0.85em;
 }

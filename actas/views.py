@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.http import JsonResponse
 from django.shortcuts import render
 
 
@@ -12,3 +13,7 @@ def lista(request):
 
 def subir(request):
     return render(request, 'subir.html')
+
+
+def subir_data(request):
+    return JsonResponse({})

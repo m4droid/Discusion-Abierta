@@ -1,0 +1,122 @@
+[
+	{
+		"pk": 1,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Tarapacá",
+			"iso_3166_2": "CL-TA"
+		}
+	},
+	{
+		"pk": 2,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Antofagasta",
+			"iso_3166_2": "CL-AN"
+		}
+	},
+	{
+		"pk": 3,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Atacama",
+			"iso_3166_2": "CL-AT"
+		}
+	},
+	{
+		"pk": 4,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Coquimbo",
+			"iso_3166_2": "CL-CO"
+		}
+	},
+	{
+		"pk": 5,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Valparaíso",
+			"iso_3166_2": "CL-VS"
+		}
+	},
+	{
+		"pk": 6,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Libertador General Bernardo O'Higgins",
+			"iso_3166_2": "CL-LI"
+		}
+	},
+	{
+		"pk": 7,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Maule",
+			"iso_3166_2": "CL-ML"
+		}
+	},
+	{
+		"pk": 8,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Bíobío",
+			"iso_3166_2": "CL-BI"
+		}
+	},
+	{
+		"pk": 9,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "La Araucanía",
+			"iso_3166_2": "CL-AR"
+		}
+	},
+	{
+		"pk": 10,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Los Lagos",
+			"iso_3166_2": "CL-LL"
+		}
+	},
+	{
+		"pk": 11,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Aisén del General Carlos Ibáñez del Campo",
+			"iso_3166_2": "CL-AI"
+		}
+	},
+	{
+		"pk": 12,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Magallanes y la Antártica Chilena",
+			"iso_3166_2": "CL-MA"
+		}
+	},
+	{
+		"pk": 13,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Metropolitana de Santiago",
+			"iso_3166_2": "CL-RM"
+		}
+	},
+	{
+		"pk": 14,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Los Ríos",
+			"iso_3166_2": "CL-LR"
+		}
+	},
+	{
+		"pk": 15,
+		"model": "actas.region",
+		"fields": {
+			"nombre": "Arica y Parinacota",
+			"iso_3166_2": "CL-AP"
+		}
+	}
+]

@@ -1,0 +1,435 @@
+[
+	{
+		"pk": 11,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 1,
+			"nombre": "Iquique"
+		}
+	},
+	{
+		"pk": 14,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 1,
+			"nombre": "El Tamarugal"
+		}
+	},
+	{
+		"pk": 21,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 2,
+			"nombre": "Antofagasta"
+		}
+	},
+	{
+		"pk": 22,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 2,
+			"nombre": "El Loa"
+		}
+	},
+	{
+		"pk": 23,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 2,
+			"nombre": "Tocopilla"
+		}
+	},
+	{
+		"pk": 31,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 3,
+			"nombre": "Copiapó"
+		}
+	},
+	{
+		"pk": 32,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 3,
+			"nombre": "Chañaral"
+		}
+	},
+	{
+		"pk": 33,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 3,
+			"nombre": "Huasco"
+		}
+	},
+	{
+		"pk": 41,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 4,
+			"nombre": "Elqui"
+		}
+	},
+	{
+		"pk": 42,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 4,
+			"nombre": "Choapa"
+		}
+	},
+	{
+		"pk": 43,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 4,
+			"nombre": "Limarí"
+		}
+	},
+	{
+		"pk": 51,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 5,
+			"nombre": "Valparaiso"
+		}
+	},
+	{
+		"pk": 52,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 5,
+			"nombre": "Isla de Pascua"
+		}
+	},
+	{
+		"pk": 53,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 5,
+			"nombre": "Los Andes"
+		}
+	},
+	{
+		"pk": 54,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 5,
+			"nombre": "Petorca"
+		}
+	},
+	{
+		"pk": 55,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 5,
+			"nombre": "Quillota"
+		}
+	},
+	{
+		"pk": 56,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 5,
+			"nombre": "San Antonio"
+		}
+	},
+	{
+		"pk": 57,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 5,
+			"nombre": "San Felipe de Aconcagua"
+		}
+	},
+	{
+		"pk": 58,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 5,
+			"nombre": "Marga Marga"
+		}
+	},
+	{
+		"pk": 61,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 6,
+			"nombre": "Cachapoal"
+		}
+	},
+	{
+		"pk": 62,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 6,
+			"nombre": "Cardenal Caro"
+		}
+	},
+	{
+		"pk": 63,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 6,
+			"nombre": "Colchagua"
+		}
+	},
+	{
+		"pk": 71,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 7,
+			"nombre": "Talca"
+		}
+	},
+	{
+		"pk": 72,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 7,
+			"nombre": "Cauquenes"
+		}
+	},
+	{
+		"pk": 73,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 7,
+			"nombre": "Curicó"
+		}
+	},
+	{
+		"pk": 74,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 7,
+			"nombre": "Linares"
+		}
+	},
+	{
+		"pk": 81,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 8,
+			"nombre": "Concepción"
+		}
+	},
+	{
+		"pk": 82,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 8,
+			"nombre": "Arauco"
+		}
+	},
+	{
+		"pk": 83,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 8,
+			"nombre": "Biobío"
+		}
+	},
+
+	{
+		"pk": 84,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 8,
+			"nombre": "Ñuble"
+		}
+	},
+	{
+		"pk": 91,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 9,
+			"nombre": "Cautín"
+		}
+	},
+	{
+		"pk": 92,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 9,
+			"nombre": "Malleco"
+		}
+	},
+	{
+		"pk": 101,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 10,
+			"nombre": "Llanquihue"
+		}
+	},
+	{
+		"pk": 102,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 10,
+			"nombre": "Chiloé"
+		}
+	},
+	{
+		"pk": 103,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 10,
+			"nombre": "Osorno"
+		}
+	},
+	{
+		"pk": 104,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 10,
+			"nombre": "Palena"
+		}
+	},
+	{
+		"pk": 111,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 11,
+			"nombre": "Coihaique"
+		}
+	},
+	{
+		"pk": 112,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 11,
+			"nombre": "Aisén"
+		}
+	},
+	{
+		"pk": 113,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 11,
+			"nombre": "Capitán Prat"
+		}
+	},
+	{
+		"pk": 114,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 11,
+			"nombre": "General Carrera"
+		}
+	},
+	{
+		"pk": 121,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 12,
+			"nombre": "Magallanes"
+		}
+	},
+	{
+		"pk": 122,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 12,
+			"nombre": "Antártica Chilena"
+		}
+	},
+	{
+		"pk": 123,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 12,
+			"nombre": "Tierra del Fuego"
+		}
+	},
+	{
+		"pk": 124,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 12,
+			"nombre": "Última Esperanza"
+		}
+	},
+	{
+		"pk": 131,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 13,
+			"nombre": "Santiago"
+		}
+	},
+	{
+		"pk": 132,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 13,
+			"nombre": "Cordillera"
+		}
+	},
+	{
+		"pk": 133,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 13,
+			"nombre": "Chacabuco"
+		}
+	},
+	{
+		"pk": 134,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 13,
+			"nombre": "Maipo"
+		}
+	},
+	{
+		"pk": 135,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 13,
+			"nombre": "Melipilla"
+		}
+	},
+	{
+		"pk": 136,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 13,
+			"nombre": "Talagante"
+		}
+	},
+	{
+		"pk": 141,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 14,
+			"nombre": "Valdivia"
+		}
+	},
+	{
+		"pk": 142,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 14,
+			"nombre": "Ranco"
+		}
+	},
+	{
+		"pk": 151,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 15,
+			"nombre": "Arica"
+		}
+	},
+	{
+		"pk": 152,
+		"model": "actas.provincia",
+		"fields": {
+			"region": 15,
+			"nombre": "Parinacota"
+		}
+	}
+]

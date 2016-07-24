@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from actas.views import index, lista, subir
+from actas.views import index, lista, subir, subir_data
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
     url(r'^actas/$', lista),
     url(r'^actas/subir/$', subir),
+    url(r'^actas/subir/data$', subir_data),
 ]

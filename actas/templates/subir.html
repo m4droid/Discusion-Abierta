@@ -7,29 +7,121 @@
 
 {% block body %}
 <div layout="column" layout-align="center" ng-controller="ActaCtrl" ng-cloak>
-  <div ng-repeat="itemGroup in itemsGroups">
-    <div class="grupoitems_encabezado">
-      <div class="nombre">{$ itemGroup.nombre $}</div>
-      <div class="descripcion">{$ itemGroup.descripcion $}</div>
-    </div>
+  <div layout="column" class="md-inline-form">
+    <h3>Datos geográficos</h3>
+    <md-content>
+      <div layout-xs="column" layout-gt-xs="row" layout-padding>
+        <md-input-container flex>
+          <label>Región</label>
+          <md-select ng-model="acta.geo.region">
+            <md-option ng-repeat="region in regiones" ng-value="region">{$ region.fields.nombre $}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Provincia</label>
+          <md-select ng-model="acta.geo.provincia">
+            <md-option ng-repeat="provincia in provinciasFiltradas" ng-value="provincia">{$ provincia.fields.nombre $}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Comuna</label>
+          <md-select ng-model="acta.geo.comuna">
+            <md-option ng-repeat="comuna in comunasFiltradas" ng-value="comuna">{$ comuna.fields.nombre $}</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+    </md-content>
+    <md-content class="centrar_texto" layout-gt-sm="column" layout-padding>
+      <div>
+        <md-input-container>
+          <label>Dirección</label>
+          <input ng-model="acta.geo.direccion" />
+        </md-input-container>
+      </div>
+    </md-content>
+    <md-content class="centrar_texto" layout-gt-sm="column" layout-padding>
+      <h3>2. Datos del organizador</h3>
+      <div>
+        <md-input-container>
+          <label>Nombre del organizador</label>
+          <input ng-model="acta.organizador.nombre" />
+        </md-input-container>
+        <md-input-container>
+          <label>Apellido del organizador</label>
+          <input ng-model="acta.organizador.apellido" />
+        </md-input-container>
+        <md-input-container>
+          <label>RUT del organizador</label>
+          <input ng-model="acta.organizador.rut" />
+        </md-input-container>
+      </div>
+    </md-content>
+    <md-content class="centrar_texto" layout-gt-sm="column" layout-padding>
+      <h3>
+        <span>3. Datos de los {$ acta.participantes.length $} participantes</span>
+        <md-button class="md-fab md-mini" aria-label="Agregar participante" ng-click="agregarParticipante()">+</md-button>
+      </h3>
+      <div ng-repeat="participante in acta.participantes">
+        <md-input-container>
+          <p style="color: #ccc; margin-bottom: 34px;">{$ ($index + 1) $}.</p>
+        </md-input-container>
+        <md-input-container>
+          <label>Nombre</label>
+          <input ng-model="participante.nombre" />
+        </md-input-container>
+        <md-input-container>
+          <label>Apellido</label>
+          <input ng-model="participante.apellido" />
+        </md-input-container>
+        <md-input-container>
+          <label>RUT</label>
+          <input ng-model="participante.rut" />
+        </md-input-container>
+        <md-input-container>
+          <md-button class="md-fab md-mini" aria-label="Quitar participante" ng-click="quitarParticipante($index)">-</md-button>
+        </md-input-container>
+      </div>
+    </md-content>
+  </div>
+  <div ng-repeat="itemGroup in acta.itemsGroups" style="background-color: #ccc;">
+    <md-toolbar class="grupoitems_encabezado">
+      <div class="md-toolbar-tools">
+        <div>
+          <div class="nombre">{$ itemGroup.nombre $}</div>
+          <div class="descripcion">{$ itemGroup.descripcion $}</div>
+        </div>
+        <!--span flex></span>
+        <div style="margin: -15px">
+          <md-button class="md-fab md-mini sin_margen" aria-label="Agregar" ng-click="agregarFila(itemGroup)">+</md-button>
+        </div-->
+      </div>
+    </md-toolbar>
     <div class="grupoitems_item_encabezado" layout="row">
       <div class="par" flex="25">VALOR / PRINCIPIO</div>
-      <div class="impar centrar_texto" flex="15">CATEGORÍA</div>
-      <div class="par" flex=60>FUNDAMENTO</div>
+      <div class="impar centrar_texto" flex-xs="40" flex-sm="30" flex-md="20" flex-gt-md="15">CATEGORÍA</div>
+      <div class="par" flex>FUNDAMENTO</div>
     </div>
     <div class="item" ng-repeat="item in itemGroup.items" layout="row">
       <div class="container_nombre" flex=25>
-        <textarea class="nombre" ng-model="item.nombre"></textarea>
+        <textarea class="nombre" ng-model="item.nombre" readonly></textarea>
       </div>
-      <md-radio-group class="categoria" layout="column" ng-model="item.categoria" flex=15>
+      <md-radio-group class="categoria" layout="column" ng-model="item.categoria" flex-xs="40" flex-sm="30" flex-md="20" flex-gt-md="15" style="padding: 5px 0 0 0; background-color: #ccc; height: calc(100% - 5px);">
         <md-radio-button value="1" class="par">Acuerdo</md-radio-button>
         <md-radio-button value="0" class="impar">Acuerdo parcial</md-radio-button>
         <md-radio-button value="-1" class="par">Desacuerdo</md-radio-button>
       </md-radio-group>
-      <div class="container_fundamento" flex=60>
+      <div class="container_fundamento" flex>
         <textarea class="fundamento" ng-model="item.fundamento"></textarea>
       </div>
+      <!--div style="text-align: center; padding: 5px; width: 55px;">
+        <md-button class="md-fab md-mini sin_margen" aria-label="Agregar" ng-click="quitarFila(itemGroup, $index)">-</md-button>
+      </div-->
     </div>
+  </div>
+  <div layout="column" class="md-inline-form" style="padding: 50px;">
+    <md-content class="centrar_texto">
+      <md-button class="md-raised md-primary" aria-label="Subir acta" ng-click="subirActa()">Subir acta</md-button>
+    </md-content>
   </div>
 </div>
 {% endblock %}
