@@ -8,9 +8,9 @@
 {% block body %}
 <div layout="column" layout-align="center" ng-controller="ActaCtrl" ng-cloak>
   <div layout="column" class="md-inline-form">
-    <h3>Datos geográficos</h3>
-    <md-content>
-      <div layout-xs="column" layout-gt-xs="row" layout-padding>
+    <md-content layout-padding>
+      <h3>Datos geográficos</h3>
+      <div layout-xs="column" layout-gt-xs="row">
         <md-input-container flex>
           <label>Región</label>
           <md-select ng-model="acta.geo.region">
@@ -31,26 +31,26 @@
         </md-input-container>
       </div>
     </md-content>
-    <md-content class="centrar_texto" layout-gt-sm="column" layout-padding>
-      <div>
-        <md-input-container>
+    <md-content layout-padding>
+      <div layout-xs="column" layout-gt-xs="row">
+        <md-input-container flex>
           <label>Dirección</label>
           <input ng-model="acta.geo.direccion" />
         </md-input-container>
       </div>
     </md-content>
-    <md-content class="centrar_texto" layout-gt-sm="column" layout-padding>
-      <h3>2. Datos del organizador</h3>
-      <div>
-        <md-input-container>
+    <md-content layout-padding>
+      <h3>Datos del organizador</h3>
+      <div layout-xs="column" layout-gt-xs="row">
+        <md-input-container flex>
           <label>Nombre del organizador</label>
           <input ng-model="acta.organizador.nombre" />
         </md-input-container>
-        <md-input-container>
+        <md-input-container flex>
           <label>Apellido del organizador</label>
           <input ng-model="acta.organizador.apellido" />
         </md-input-container>
-        <md-input-container>
+        <md-input-container flex>
           <label>RUT del organizador</label>
           <input ng-model="acta.organizador.rut" />
         </md-input-container>
@@ -58,26 +58,26 @@
     </md-content>
     <md-content class="centrar_texto" layout-gt-sm="column" layout-padding>
       <h3>
-        <span>3. Datos de los {$ acta.participantes.length $} participantes</span>
+        <span>Datos de los {$ acta.participantes.length $} participantes</span>
         <md-button class="md-fab md-mini" aria-label="Agregar participante" ng-click="agregarParticipante()">+</md-button>
       </h3>
-      <div ng-repeat="participante in acta.participantes">
-        <md-input-container>
-          <p style="color: #ccc; margin-bottom: 34px;">{$ ($index + 1) $}.</p>
+      <div layout-xs="column" layout-gt-xs="row" ng-repeat="participante in acta.participantes">
+        <md-input-container flex flex-sm-xs=5>
+          <div style="color: #ccc; margin-top: 8px;">{$ ($index + 1) $}.</div>
         </md-input-container>
-        <md-input-container>
+        <md-input-container flex>
           <label>Nombre</label>
           <input ng-model="participante.nombre" />
         </md-input-container>
-        <md-input-container>
+        <md-input-container flex>
           <label>Apellido</label>
           <input ng-model="participante.apellido" />
         </md-input-container>
-        <md-input-container>
+        <md-input-container flex>
           <label>RUT</label>
           <input ng-model="participante.rut" />
         </md-input-container>
-        <md-input-container>
+        <md-input-container flex flex-sm-xs=10>
           <md-button class="md-fab md-mini" aria-label="Quitar participante" ng-click="quitarParticipante($index)">-</md-button>
         </md-input-container>
       </div>

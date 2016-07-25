@@ -3,16 +3,16 @@
 angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http) {
 
   $scope.agregarParticipante = function () {
-    if ($scope.participantes.length < 10) {
-      $scope.participantes.push({nombre: '', apellido: ''});
+    if ($scope.acta.participantes.length < 10) {
+      $scope.acta.participantes.push({nombre: '', apellido: ''});
     }
   };
 
   $scope.quitarParticipante = function (index) {
-    if ($scope.participantes.length == 4) {
+    if ($scope.acta.participantes.length == 4) {
       return;
     }
-    $scope.participantes.splice(index, 1);
+    $scope.acta.participantes.splice(index, 1);
   };
 
   $scope.subirActa = function () {
