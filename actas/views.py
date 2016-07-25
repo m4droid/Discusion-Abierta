@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
+import json
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.utils.datetime_safe import date
+from actas.models import Acta, Item, Comuna, ActaRespuestaItem
 
 
 def index(request):
@@ -16,4 +20,22 @@ def subir(request):
 
 
 def subir_data(request):
+    if request.method == 'POST':
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        geo = body['geo']
+        comuna = geo['comuna']
+        comuna_key = comuna['pk']
+        comuna_value = Comuna.objects.get(pk=comuna_key)
+        direccion = geo['direccion']
+        memoria_historica = "x"
+        user = User.objects.all().first()
+        acta = Acta(comuna=comuna_value, direccion=direccion, memoria_historica=memoria_historica,fecha=date.today(),organizador = user)
+        acta.save()
+        item_group = body['itemsGroups']
+
+        for group in item_group:
+            for i in group['items']:
+                actaitem = ActaRespuestaItem(acta =acta, item= i['nombre'],categoria=i['categoria'],fundamento= i['fundamento'])
+                actaitem.save()
     return JsonResponse({})
