@@ -39,11 +39,17 @@ class GrupoItems(models.Model):
     descripcion = models.TextField()
     orden = models.IntegerField()
 
+    def __str__(self):
+        return self.nombre.encode('utf-8')
+
 
 class Item(models.Model):
     grupo_items = models.ForeignKey(GrupoItems)
     nombre = models.CharField(max_length=256)
     orden = models.IntegerField()
+    
+    def __str__(self):
+        return self.nombre.encode('utf-8')
 
 
 class Acta(models.Model):
@@ -52,8 +58,8 @@ class Acta(models.Model):
     direccion = models.CharField(max_length=256)
 
     organizador = models.ForeignKey(User, related_name='organizador')
-    #moderador = models.ForeignKey(User, related_name='moderador')
-    #secretario = models.ForeignKey(User, related_name='secretario')
+    # moderador = models.ForeignKey(User, related_name='moderador')
+    # secretario = models.ForeignKey(User, related_name='secretario')
     participantes = models.ManyToManyField(User, related_name='participantes')
     memoria_historica = models.TextField()
 
