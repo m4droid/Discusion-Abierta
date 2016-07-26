@@ -21,7 +21,7 @@ def _digito_verificador(rut):
 
 
 def verificar_rut(rut_con_dv):
-    if type(rut_con_dv) != str \
+    if type(rut_con_dv) not in [str, unicode] \
             or len(rut_con_dv) == 0 \
             or REGEX_RUT.match(rut_con_dv) is None:
         return False
@@ -55,12 +55,12 @@ def _get_html_verificar_cedula(rut_con_dv, serie):
 def verificar_cedula(rut_con_dv, serie):
     result = []
 
-    if type(rut_con_dv) != str \
+    if type(rut_con_dv) not in [str, unicode] \
             or len(rut_con_dv) == 0 \
             or not verificar_rut(rut_con_dv):
         result.append('RUT inválido')
 
-    if type(serie) != str or len(serie) == 0:
+    if type(serie) not in [str, unicode] or len(serie) == 0:
         result.append('Número de serie inválido')
 
     if len(result) > 0:

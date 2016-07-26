@@ -71,9 +71,9 @@ class Acta(models.Model):
     comuna = models.ForeignKey(Comuna)
     direccion = models.CharField(max_length=256)
 
-    organizador = models.ForeignKey(User, related_name='organizador')
+    organizador = models.ForeignKey(User)
     participantes = models.ManyToManyField(User, related_name='participantes')
-    memoria_historica = models.TextField()
+    memoria_historica = models.TextField(blank=True, null=True)
 
 
 class ActaRespuestaItem(models.Model):
@@ -85,7 +85,7 @@ class ActaRespuestaItem(models.Model):
     acta = models.ForeignKey(Acta)
     item = models.ForeignKey(Item)
     categoria = models.IntegerField(choices=CATEGORIA_OPCIONES)
-    fundamento = models.TextField()
+    fundamento = models.TextField(blank=True, null=True)
 
     class Meta:
         unique_together = ('acta', 'item')

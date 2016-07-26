@@ -44,8 +44,17 @@ def _validar_datos_geograficos(acta):
 
     direccion = acta.get('geo', {}).get('direccion')
 
-    if type(direccion) != str or len(direccion) < 5:
+    if type(direccion) not in [str, unicode] or len(direccion) < 5:
         return ['Dirección inválida']
+
+    if type(region_seleccionada) != dict:
+        return ['Región inválida']
+
+    if type(provincia_seleccionada) != dict:
+        return ['Provincia inválida']
+
+    if type(comuna_seleccionada) != dict:
+        return ['Comuna inválida']
 
     comunas = Comuna.objects.filter(pk=comuna_seleccionada['pk'])
 
@@ -70,10 +79,10 @@ def _validar_participante(participante, pos):
     nombre = participante.get('nombre')
     apellido = participante.get('apellido')
 
-    if type(nombre) != str or len(nombre) < 2:
+    if type(nombre) not in [str, unicode] or len(nombre) < 2:
         errores.append('Nombre del participante {0:d} es inválido.'.format(pos))
 
-    if type(apellido) != str or len(apellido) < 2:
+    if type(apellido) not in [str, unicode] or len(apellido) < 2:
         errores.append('Apellido del participante {0:d} es inválido.'.format(pos))
 
     return errores
@@ -121,7 +130,7 @@ def _validar_participantes(acta):
 
     if len(participantes_en_db) > 0:
         for participante in participantes_en_db:
-            errores.append('El RUT {0:s} ya participó del proceso.'.format(participante.rut))
+            errores.append('El RUT {0:s} ya participó del proceso.'.format(participante.username))
 
     return errores
 
@@ -129,23 +138,25 @@ def _validar_participantes(acta):
 def _validar_items(acta):
     errores = []
 
+    # TODO: Validar todos los items por DB
+
     for group in acta['itemsGroups']:
         for i, item in enumerate(group['items']):
             acta_item = Item.objects.filter(pk=item.get('pk'))
 
-            if len(acta_item) != 1 or acta_item[0]['nombre'] != item.get('nombre'):
+            if len(acta_item) != 1 or acta_item[0].nombre != item.get('nombre'):
                 errores.append(
-                    'Existen errores de validación en ítem {0:s} del grupo {1:s}'.format(
-                        item.get('nombre'),
-                        group.get('nombre')
+                    'Existen errores de validación en ítem {0:s} del grupo {1:s}.'.format(
+                        item.get('nombre').encode('utf-8'),
+                        group.get('nombre').encode('utf-8')
                     )
                 )
 
-            if item.get('categoria') not in [-1, 0, 1]:
+            if item.get('categoria') not in ['-1', '0', '1']:
                 errores.append(
-                    'El ítem {0:s} del grupo {1:s} no tiene categoría válida'.format(
-                        item.get('nombre'),
-                        group.get('nombre')
+                    'No se ha seleccionado la categoría del ítem {0:s}, del grupo {1:s}.'.format(
+                        item.get('nombre').encode('utf-8'),
+                        group.get('nombre').encode('utf-8')
                     )
                 )
 
@@ -160,51 +171,48 @@ def _crear_usuario(datos_usuario):
     return usuario
 
 
-def _guardar_acta(acta):
-    organizador = _crear_usuario(acta['organizador'])
-
-    participantes = []
-
-    for p in acta['participantes']:
-        participantes.append(_crear_usuario(p))
+def _guardar_acta(datos_acta):
+    organizador = _crear_usuario(datos_acta['organizador'])
 
     acta = Acta(
-        comuna=acta['geo']['comuna']['pk'],
-        direccion=acta['direccion'],
+        comuna=Comuna.objects.get(pk=datos_acta['geo']['comuna']['pk']),
+        direccion=datos_acta['geo']['direccion'],
         organizador=organizador,
-        participantes=participantes,
-        memoria_historica=acta['memoria'],
+        memoria_historica=datos_acta.get('memoria'),
         fecha=timezone.now(),
     )
+
     acta.save()
 
-    for group in acta['itemsGroups']:
-        for item in group['items']:
+    for p in datos_acta['participantes']:
+        acta.participantes.add(_crear_usuario(p))
+
+    acta.save()
+
+    for group in datos_acta['itemsGroups']:
+        for i in group['items']:
+            item = Item.objects.get(pk=i['pk'])
             acta_item = ActaRespuestaItem(
                 acta=acta,
-                item=item['pk'],
-                categoria=item['categoria'],
-                fundamento=item['fundamento']
+                item=item,
+                categoria=i['categoria'],
+                fundamento=i.get('fundamento')
             )
             acta_item.save()
 
 
 @transaction.atomic
 def subir_data(request):
-    if request.method == 'POST':
+    if request.method != 'POST':
         return JsonResponse({'status': 'error', 'mensajes': ['Request inválido.']}, status=400)
 
     acta = request.body.decode('utf-8')
     acta = json.loads(acta)
 
-    errores = _validar_datos_geograficos(acta) + _validar_participantes(acta) + _validar_items(acta)
+    for e in [_validar_datos_geograficos(acta), _validar_participantes(acta), _validar_items(acta)]:
+        if len(e) > 0:
+            return JsonResponse({'status': 'error', 'mensajes': e}, status=400)
 
-    if len(errores) > 0:
-        return JsonResponse({'status': 'error', 'mensajes': errores}, status=400)
+    _guardar_acta(acta)
 
-    errores = _guardar_acta(acta)
-
-    if len(errores) > 0:
-        return JsonResponse({'status': 'error', 'mensajes': errores}, status=400)
-
-    JsonResponse({'status': 'success', 'mensajes': ['El acta ha sido ingresada con éxito.']})
+    return JsonResponse({'status': 'success', 'mensajes': ['El acta ha sido ingresada con éxito.']})
