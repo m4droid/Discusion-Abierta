@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from actas.views import index, lista, subir, subir_data
+from actas.views import index, lista, subir, subir_data, obtener_base
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^actas/$', lista),
     url(r'^actas/subir/$', subir),
     url(r'^actas/subir/data$', subir_data),
+    url(r'^actas/base$', obtener_base),
 ]
