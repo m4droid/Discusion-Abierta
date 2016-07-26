@@ -118,6 +118,21 @@
       </div-->
     </div>
   </div>
+  <div>
+    <md-toolbar class="grupoitems_encabezado">
+      <div class="md-toolbar-tools">
+        <div>
+          <div class="nombre">Memoria histórica</div>
+          <div class="descripcion">Este espacio está destinado para realizar un aporte a la memoria histórica de este proceso. Podrá ser completado con ideas, propuestas y visiones sobre la educación de nuestro país para las futuras generaciones.</div>
+        </div>
+      </div>
+    </md-toolbar>
+    <div layout="row">
+      <md-input-container class="md-block" flex>
+        <textarea ng-model="acta.memoria" md-maxlength="1024" rows="6" md-select-on-focus></textarea>
+      </md-input-container>
+    </div>
+  </div>
   <div layout="column" class="md-inline-form" style="padding: 50px;">
     <md-content class="centrar_texto">
       <md-button class="md-raised md-primary" aria-label="Subir acta" ng-click="subirActa()">Subir acta</md-button>
