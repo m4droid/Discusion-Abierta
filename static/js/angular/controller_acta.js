@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http) {
+angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http, $mdDialog, $mdMedia) {
 
   $scope.agregarParticipante = function () {
     if ($scope.acta.participantes.length < 10) {
@@ -15,15 +15,85 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
     $scope.acta.participantes.splice(index, 1);
   };
 
-  $scope.subirActa = function () {
+  var DialogErroresCtrl = function ($scope, $mdDialog, errores) {
+    $scope.errores = errores;
+
+    $scope.hide = function () {
+      $mdDialog.hide();
+    };
+    $scope.cancel = function () {
+      $mdDialog.cancel();
+    };
+  };
+
+  var confirmarActa = function (ev) {
+    var confirm = $mdDialog.prompt()
+      .clickOutsideToClose(true)
+      .title('Validación del acta')
+      .textContent('Antes de enviar el acta se necesita comprobar el número de serie de la cédula de identidad del organizador.')
+      .placeholder('Número de serie')
+      .ariaLabel('Obtener número de serie')
+      .targetEvent(ev)
+      .ok('Enviar')
+      .cancel('Cancelar');
+
+    $mdDialog.show(confirm).then(function (result) {
+      $scope.acta.organizador.serie = result;
+
+      $http({
+        method: 'POST',
+        url: '/actas/subir/confirmar',
+        data: $scope.acta
+      }).then(
+        function (response) {
+          $mdDialog.show($mdDialog.alert()
+            .title('Envío del acta')
+            .textContent('El acta ha sido enviada con exito.')
+            .ariaLabel('Envío del acta')
+            .ok('OK')
+            .targetEvent(ev));
+        },
+        function (response) {
+           $mdDialog.show($mdDialog.alert()
+            .title('Envío del acta')
+            .textContent(response.data.mensajes[0])
+            .ariaLabel('Envío del acta')
+            .ok('OK')
+            .targetEvent(ev));
+        }
+      );
+    }, function () {
+      $scope.acta.organizador.serie = undefined;
+    });
+  };
+
+  var mostrarErrores = function (ev, errores) {
+    $mdDialog.show({
+      controller: DialogErroresCtrl,
+      templateUrl: '/static/html/angular/errors.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      locals: {
+        errores: errores
+      }
+    });
+  };
+
+  $scope.validarActa = function (ev) {
     $http({
       method: 'POST',
-      url: '/actas/subir/data',
+      url: '/actas/subir/validar',
       data: $scope.acta
-    }).then(function (response) {
-      // Si todo salio bien
-    });
-  }
+    }).then(
+      function (response) {
+        confirmarActa(ev);
+      },
+      function (response) {
+        mostrarErrores(ev, response.data.mensajes);
+      }
+    );
+  };
 
   var filtrarProvincias = function () {
     $scope.provinciasFiltradas = $scope.provincias.filter(function (provincia) {

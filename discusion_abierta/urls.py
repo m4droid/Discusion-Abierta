@@ -16,13 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from actas.views import index, lista, subir, subir_data, obtener_base
+from actas.views import index, lista, subir, obtener_base, subir_validar, subir_confirmar
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
     url(r'^actas/$', lista),
-    url(r'^actas/subir/$', subir),
-    url(r'^actas/subir/data$', subir_data),
     url(r'^actas/base$', obtener_base),
+    url(r'^actas/subir/$', subir),
+    url(r'^actas/subir/validar$', subir_validar),
+    url(r'^actas/subir/confirmar$', subir_confirmar),
 ]

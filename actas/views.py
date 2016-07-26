@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
 
-from .libs import verificar_rut
+from .libs import verificar_rut, verificar_cedula
 from .models import Comuna, Acta, Item, GrupoItems, ActaRespuestaItem
 
 
@@ -201,18 +201,40 @@ def _guardar_acta(datos_acta):
             acta_item.save()
 
 
-@transaction.atomic
-def subir_data(request):
+def _validar(request):
     if request.method != 'POST':
-        return JsonResponse({'status': 'error', 'mensajes': ['Request inválido.']}, status=400)
+        return ['Request inválido.']
 
     acta = request.body.decode('utf-8')
     acta = json.loads(acta)
 
     for e in [_validar_datos_geograficos(acta), _validar_participantes(acta), _validar_items(acta)]:
         if len(e) > 0:
-            return JsonResponse({'status': 'error', 'mensajes': e}, status=400)
+            return (acta, e,)
 
-    _guardar_acta(acta)
+    return (acta, [],)
 
-    return JsonResponse({'status': 'success', 'mensajes': ['El acta ha sido ingresada con éxito.']})
+
+@transaction.atomic
+def subir_validar(request):
+    acta, errores = _validar(request)
+
+    if len(errores) > 0:
+        return JsonResponse({'status': 'error', 'mensajes': errores}, status=400)
+
+    return JsonResponse({'status': 'success', 'mensajes': ['El acta ha sido validada exitosamente.']})
+
+
+@transaction.atomic
+def subir_confirmar(request):
+    acta, errores = _validar(request)
+
+    if len(errores) > 0:
+        return JsonResponse({'status': 'error', 'mensajes': errores}, status=400)
+
+    organizador = acta.get('organizador', {})
+
+    if verificar_cedula(organizador.get('rut'), organizador.get('serie')):
+        _guardar_acta(acta)
+        return JsonResponse({'status': 'success', 'mensajes': ['El acta ha sido ingresada exitosamente.']})
+    return JsonResponse({'status': 'error', 'mensajes': ['El número de serie no es válido.']}, status=400)

@@ -129,13 +129,13 @@
     </md-toolbar>
     <div layout="row">
       <md-input-container class="md-block" flex>
-        <textarea ng-model="acta.memoria" md-maxlength="1024" rows="6" md-select-on-focus></textarea>
+        <textarea ng-model="acta.memoria" aria-label="Memoria histórica" md-maxlength="1024" rows="6" md-select-on-focus></textarea>
       </md-input-container>
     </div>
   </div>
   <div layout="column" class="md-inline-form" style="padding: 50px;">
     <md-content class="centrar_texto">
-      <md-button class="md-raised md-primary" aria-label="Subir acta" ng-click="subirActa()">Subir acta</md-button>
+      <md-button class="md-raised md-primary" aria-label="Subir acta" ng-click="validarActa($event)">Validar acta</md-button>
     </md-content>
   </div>
 </div>
