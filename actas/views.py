@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 import json
+
 from django.contrib.auth.models import User
+from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render
-from django.utils.datetime_safe import date
-from actas.models import Acta, Item, Comuna, ActaRespuestaItem
+from django.utils import timezone
+
+from .libs import verificar_rut
+from .models import Comuna, Acta, Item, GrupoItems, ActaRespuestaItem
 
 
 def index(request):
@@ -26,46 +30,181 @@ def obtener_base(request):
         'participantes': [{}, {}, {}, {}]
     }
 
-    acta['itemsGroups'] = [
-        {
-            'nombre': 'EDUCACIÓN PÚBLICA',
-            'descripcion': '¿Cuáles son los VALORES Y PRINCIPIOS más importantes que deben inspirar y dar sustento a la educación pública?',
-            'items': [
-                {'nombre': 'Principio A'},
-                {'nombre': 'Principio B'},
-                {'nombre': 'Principio C'},
-            ]
-        },
-        {
-            'nombre': 'DERECHOS',
-            'descripcion': '¿Cuáles son los DERECHOS más importantes que la educación pública debiera establecer para todas las personas?',
-            'items': [
-                {'nombre': 'Principio D'},
-                {'nombre': 'Principio E'},
-                {'nombre': 'Principio F'},
-            ]
-        }
-    ]
+    acta['itemsGroups'] = [g.to_dict() for g in GrupoItems.objects.all().order_by('orden')]
+
     return JsonResponse(acta)
 
 
+def _validar_datos_geograficos(acta):
+    errores = []
+
+    comuna_seleccionada = acta.get('geo', {}).get('comuna')
+    provincia_seleccionada = acta.get('geo', {}).get('provincia')
+    region_seleccionada = acta.get('geo', {}).get('region')
+
+    direccion = acta.get('geo', {}).get('direccion')
+
+    if type(direccion) != str or len(direccion) < 5:
+        return ['Dirección inválida']
+
+    comunas = Comuna.objects.filter(pk=comuna_seleccionada['pk'])
+
+    if len(comunas) != 1:
+        errores.append('Comuna inválida.')
+    else:
+        if comunas[0].provincia.pk != provincia_seleccionada['pk']:
+            errores.append('Provincia no corresponde a la comuna.')
+
+        if comunas[0].provincia.region.pk != region_seleccionada['pk']:
+            errores.append('Región no corresponde a la provincia.')
+
+    return errores
+
+
+def _validar_participante(participante, pos):
+    errores = []
+
+    if not verificar_rut(participante.get('rut')):
+        errores.append('RUT del participante {0:d} es inválido.'.format(pos))
+
+    nombre = participante.get('nombre')
+    apellido = participante.get('apellido')
+
+    if type(nombre) != str or len(nombre) < 2:
+        errores.append('Nombre del participante {0:d} es inválido.'.format(pos))
+
+    if type(apellido) != str or len(apellido) < 2:
+        errores.append('Apellido del participante {0:d} es inválido.'.format(pos))
+
+    return errores
+
+
+def _validar_participantes(acta):
+    errores = []
+
+    participantes = acta.get('participantes', [])
+
+    if type(participantes) != list or not (4 <= len(participantes) <= 10):
+        errores.append('Error en el formato de los participantes.')
+        return errores
+
+    for i, participante in enumerate(participantes):
+        errores += _validar_participante(participante, i + 1)
+
+    if len(errores) > 0:
+        return errores
+
+    rut_organizador = acta.get('organizador', {}).get('rut')
+
+    if not verificar_rut(rut_organizador):
+        return ['El RUT del organizador no es válido']
+
+    ruts_participantes = [p['rut'] for p in participantes]
+
+    if rut_organizador in ruts_participantes:
+        return ['El organizador está dentro de la lista de participantes.']
+
+    # Ruts diferentes
+    ruts = set(ruts_participantes + [rut_organizador])
+    if not (5 <= len(ruts) <= 11):
+        return ['Existen RUTs repetidos']
+
+    # Nombres diferentes
+    nombres = set(
+        (p['nombre'].lower(), p['apellido'].lower(), ) for p in (participantes + [acta['organizador']])
+    )
+    if not (5 <= len(nombres) <= 11):
+        return ['Existen nombres repetidos']
+
+    # Verificar que los participantes no hayan enviado una acta antes
+    participantes_en_db = User.objects.filter(username__in=list(ruts))
+
+    if len(participantes_en_db) > 0:
+        for participante in participantes_en_db:
+            errores.append('El RUT {0:s} ya participó del proceso.'.format(participante.rut))
+
+    return errores
+
+
+def _validar_items(acta):
+    errores = []
+
+    for group in acta['itemsGroups']:
+        for i, item in enumerate(group['items']):
+            acta_item = Item.objects.filter(pk=item.get('pk'))
+
+            if len(acta_item) != 1 or acta_item[0]['nombre'] != item.get('nombre'):
+                errores.append(
+                    'Existen errores de validación en ítem {0:s} del grupo {1:s}'.format(
+                        item.get('nombre'),
+                        group.get('nombre')
+                    )
+                )
+
+            if item.get('categoria') not in [-1, 0, 1]:
+                errores.append(
+                    'El ítem {0:s} del grupo {1:s} no tiene categoría válida'.format(
+                        item.get('nombre'),
+                        group.get('nombre')
+                    )
+                )
+
+    return errores
+
+
+def _crear_usuario(datos_usuario):
+    usuario = User(username=datos_usuario['rut'])
+    usuario.first_name = datos_usuario['nombre']
+    usuario.last_name = datos_usuario['apellido']
+    usuario.save()
+    return usuario
+
+
+def _guardar_acta(acta):
+    organizador = _crear_usuario(acta['organizador'])
+
+    participantes = []
+
+    for p in acta['participantes']:
+        participantes.append(_crear_usuario(p))
+
+    acta = Acta(
+        comuna=acta['geo']['comuna']['pk'],
+        direccion=acta['direccion'],
+        organizador=organizador,
+        participantes=participantes,
+        memoria_historica=acta['memoria'],
+        fecha=timezone.now(),
+    )
+    acta.save()
+
+    for group in acta['itemsGroups']:
+        for item in group['items']:
+            acta_item = ActaRespuestaItem(
+                acta=acta,
+                item=item['pk'],
+                categoria=item['categoria'],
+                fundamento=item['fundamento']
+            )
+            acta_item.save()
+
+
+@transaction.atomic
 def subir_data(request):
     if request.method == 'POST':
-        body_unicode = request.body.decode('utf-8')
-        body = json.loads(body_unicode)
-        geo = body['geo']
-        comuna = geo['comuna']
-        comuna_key = comuna['pk']
-        comuna_value = Comuna.objects.get(pk=comuna_key)
-        direccion = geo['direccion']
-        memoria_historica = "x"
-        user = User.objects.all().first()
-        acta = Acta(comuna=comuna_value, direccion=direccion, memoria_historica=memoria_historica,fecha=date.today(),organizador = user)
-        acta.save()
-        item_group = body['itemsGroups']
+        return JsonResponse({'status': 'error', 'mensajes': ['Request inválido.']}, status=400)
 
-        for group in item_group:
-            for i in group['items']:
-                actaitem = ActaRespuestaItem(acta =acta, item= i['nombre'],categoria=i['categoria'],fundamento= i['fundamento'])
-                actaitem.save()
-    return JsonResponse({})
+    acta = request.body.decode('utf-8')
+    acta = json.loads(acta)
+
+    errores = _validar_datos_geograficos(acta) + _validar_participantes(acta) + _validar_items(acta)
+
+    if len(errores) > 0:
+        return JsonResponse({'status': 'error', 'mensajes': errores}, status=400)
+
+    errores = _guardar_acta(acta)
+
+    if len(errores) > 0:
+        return JsonResponse({'status': 'error', 'mensajes': errores}, status=400)
+
+    JsonResponse({'status': 'success', 'mensajes': ['El acta ha sido ingresada con éxito.']})
