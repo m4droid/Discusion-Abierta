@@ -26,6 +26,19 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
     };
   };
 
+  var mostrarErrores = function (ev, errores) {
+    $mdDialog.show({
+      controller: DialogErroresCtrl,
+      templateUrl: '/static/html/angular/errors.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      locals: {
+        errores: errores
+      }
+    });
+  };
+
   var confirmarActa = function (ev) {
     var confirm = $mdDialog.prompt()
       .clickOutsideToClose(true)
@@ -54,29 +67,11 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
             .targetEvent(ev));
         },
         function (response) {
-           $mdDialog.show($mdDialog.alert()
-            .title('Envío del acta')
-            .textContent(response.data.mensajes[0])
-            .ariaLabel('Envío del acta')
-            .ok('OK')
-            .targetEvent(ev));
+          mostrarErrores(ev, response.data.mensajes);
         }
       );
     }, function () {
       $scope.acta.organizador.serie = undefined;
-    });
-  };
-
-  var mostrarErrores = function (ev, errores) {
-    $mdDialog.show({
-      controller: DialogErroresCtrl,
-      templateUrl: '/static/html/angular/errors.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      locals: {
-        errores: errores
-      }
     });
   };
 

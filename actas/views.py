@@ -234,7 +234,9 @@ def subir_confirmar(request):
 
     organizador = acta.get('organizador', {})
 
-    if verificar_cedula(organizador.get('rut'), organizador.get('serie')):
+    errores = verificar_cedula(organizador.get('rut'), organizador.get('serie'))
+
+    if len(errores) == 0:
         _guardar_acta(acta)
         return JsonResponse({'status': 'success', 'mensajes': ['El acta ha sido ingresada exitosamente.']})
-    return JsonResponse({'status': 'error', 'mensajes': ['El número de serie no es válido.']}, status=400)
+    return JsonResponse({'status': 'error', 'mensajes': errores}, status=400)
