@@ -1,0 +1,227 @@
+[
+{
+    "model": "actas.item",
+    "pk": 1,
+    "fields": {
+        "grupo_items": 2,
+        "nombre": "Laica",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 2,
+    "fields": {
+        "grupo_items": 2,
+        "nombre": "Gratuita",
+        "orden": 2
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 3,
+    "fields": {
+        "grupo_items": 2,
+        "nombre": "Democr\u00e1tica",
+        "orden": 3
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 4,
+    "fields": {
+        "grupo_items": 2,
+        "nombre": "Sin fines de lucro",
+        "orden": 4
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 5,
+    "fields": {
+        "grupo_items": 1,
+        "nombre": "Fin restricci\u00f3n matricula educacion estatal",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 6,
+    "fields": {
+        "grupo_items": 1,
+        "nombre": "Creaci\u00f3n de una red de instituciones estatales",
+        "orden": 2
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 7,
+    "fields": {
+        "grupo_items": 3,
+        "nombre": "Prueba estandarizada a nivel nacional (ej. PSU, SAT)",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 8,
+    "fields": {
+        "grupo_items": 3,
+        "nombre": "Prueba dependiente de cada instituci\u00f3n",
+        "orden": 3
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 9,
+    "fields": {
+        "grupo_items": 4,
+        "nombre": "Democr\u00e1tica",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 10,
+    "fields": {
+        "grupo_items": 4,
+        "nombre": "Triestamental",
+        "orden": 2
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 11,
+    "fields": {
+        "grupo_items": 4,
+        "nombre": "Transparencia",
+        "orden": 3
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 12,
+    "fields": {
+        "grupo_items": 5,
+        "nombre": "Sin fin de lucro",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 13,
+    "fields": {
+        "grupo_items": 5,
+        "nombre": "Realice investigaci\u00f3n, docencia y extensi\u00f3n",
+        "orden": 2
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 14,
+    "fields": {
+        "grupo_items": 6,
+        "nombre": "Estatizar la instituci\u00f3n",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 15,
+    "fields": {
+        "grupo_items": 6,
+        "nombre": "Cerrar la Instituci\u00f3n",
+        "orden": 2
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 16,
+    "fields": {
+        "grupo_items": 6,
+        "nombre": "Revalidar los t\u00edtulos de los alumnos egresados",
+        "orden": 3
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 17,
+    "fields": {
+        "grupo_items": 7,
+        "nombre": "Que cubra al 100% de los estudiantes.",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 18,
+    "fields": {
+        "grupo_items": 7,
+        "nombre": "Que cubra s\u00f3lo el arancel y la matr\u00edcula de los estudiantes",
+        "orden": 2
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 19,
+    "fields": {
+        "grupo_items": 7,
+        "nombre": "Que cubra mantencion",
+        "orden": 3
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 20,
+    "fields": {
+        "grupo_items": 8,
+        "nombre": "Condonar la deuda de alumnos con cr\u00e9dito",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 21,
+    "fields": {
+        "grupo_items": 8,
+        "nombre": "Aportes basales",
+        "orden": 2
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 22,
+    "fields": {
+        "grupo_items": 8,
+        "nombre": "Fin CAE",
+        "orden": 3
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 23,
+    "fields": {
+        "grupo_items": 9,
+        "nombre": "Profesores con estudios de postgrado",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 24,
+    "fields": {
+        "grupo_items": 9,
+        "nombre": "profesores con buena capacidad docente",
+        "orden": 2
+    }
+},
+{
+    "model": "actas.item",
+    "pk": 25,
+    "fields": {
+        "grupo_items": 9,
+        "nombre": "Profesores que hagan investigaci\u00f3n",
+        "orden": 3
+    }
+}
+]

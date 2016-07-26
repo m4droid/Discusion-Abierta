@@ -1,0 +1,83 @@
+[
+{
+    "model": "actas.grupoitems",
+    "pk": 1,
+    "fields": {
+        "nombre": "Educaci\u00f3n Estatal: Mejoramiento",
+        "descripcion": "\u00bfCu\u00e1l de los siguientes \u00edtems considera usted que son necesarios para mejorar la educaci\u00f3n estatal actualmente?",
+        "orden": 2
+    }
+},
+{
+    "model": "actas.grupoitems",
+    "pk": 2,
+    "fields": {
+        "nombre": "Educaci\u00f3n P\u00fablica: Caracteristicas",
+        "descripcion": "\u00bfQu\u00e9 caracter\u00edstica(s) piensa usted que debe tener la educaci\u00f3n para ser considerada p\u00fablica?",
+        "orden": 1
+    }
+},
+{
+    "model": "actas.grupoitems",
+    "pk": 3,
+    "fields": {
+        "nombre": "Educaci\u00f3n Superior: Ingreso",
+        "descripcion": "\u00bfDe qu\u00e9 manera piensa usted que deber\u00eda ser el ingreso al sistema de educaci\u00f3n superior?",
+        "orden": 3
+    }
+},
+{
+    "model": "actas.grupoitems",
+    "pk": 4,
+    "fields": {
+        "nombre": "Marco Regulatorio: Financiamiento",
+        "descripcion": "\u00bfQu\u00e9 condici\u00f3n(es) cree necesaria(s) para que una Instituci\u00f3n de Educaci\u00f3n Superior (IES) reciba financiamiento de parte del Estado?",
+        "orden": 4
+    }
+},
+{
+    "model": "actas.grupoitems",
+    "pk": 5,
+    "fields": {
+        "nombre": "Marco Regulatorio: Existencia",
+        "descripcion": "\u00bfQu\u00e9 condici\u00f3n(es) cree necesaria(s) para que una IES pueda existir, y ejercer docencia?",
+        "orden": 5
+    }
+},
+{
+    "model": "actas.grupoitems",
+    "pk": 6,
+    "fields": {
+        "nombre": "Incumplimiento Marco Regulatorio",
+        "descripcion": "En caso de que una IES no cumple con las normas que regulan su existencia, \u00bfqu\u00e9 deber\u00eda hacer el Estado?",
+        "orden": 6
+    }
+},
+{
+    "model": "actas.grupoitems",
+    "pk": 7,
+    "fields": {
+        "nombre": "Gratuidad: Caracteristicas",
+        "descripcion": "\u00bfQu\u00e9 caracter\u00edstica deber\u00eda tener la gratuidad?",
+        "orden": 7
+    }
+},
+{
+    "model": "actas.grupoitems",
+    "pk": 8,
+    "fields": {
+        "nombre": "Financiamiento: Tipo",
+        "descripcion": "En cuanto al financiamiento de las IES, \u00bfcon cu\u00e1l de los siguientes \u00edtems est\u00e1 de acuerdo?",
+        "orden": 8
+    }
+},
+{
+    "model": "actas.grupoitems",
+    "pk": 9,
+    "fields": {
+        "nombre": "Calidad: Variables",
+        "descripcion": "\u00bfCon qu\u00e9 deber\u00eda cumplir una IES para que la educaci\u00f3n que entrega sea considerada \u201cde calidad\u201d?",
+        "orden": 9
+    }
+}
+]

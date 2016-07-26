@@ -39,10 +39,14 @@ class GrupoItems(models.Model):
     descripcion = models.TextField()
     orden = models.IntegerField()
 
+    def __str__(self):
+        return self.nombre.encode('utf-8')
+
     def to_dict(self):
         return {
             'pk': self.pk,
             'nombre': self.nombre,
+            'descripcion': self.descripcion,
             'items': [i.to_dict() for i in self.item_set.all().order_by('orden')]
         }
 
@@ -51,6 +55,9 @@ class Item(models.Model):
     grupo_items = models.ForeignKey(GrupoItems)
     nombre = models.CharField(max_length=256)
     orden = models.IntegerField()
+
+    def __str__(self):
+        return self.nombre.encode('utf-8')
 
     def to_dict(self):
         return {
