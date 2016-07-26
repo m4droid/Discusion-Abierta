@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http, $mdDialog, $mdMedia) {
+angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http, $mdDialog) {
 
   $scope.agregarParticipante = function () {
     if ($scope.acta.participantes.length < 10) {
@@ -18,11 +18,8 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   var DialogErroresCtrl = function ($scope, $mdDialog, errores) {
     $scope.errores = errores;
 
-    $scope.hide = function () {
+    $scope.close = function () {
       $mdDialog.hide();
-    };
-    $scope.cancel = function () {
-      $mdDialog.cancel();
     };
   };
 
@@ -42,7 +39,6 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   var confirmarActa = function (ev) {
     var confirm = $mdDialog.prompt()
       .clickOutsideToClose(true)
-      .title('Validación del acta')
       .textContent('Antes de enviar el acta se necesita comprobar el número de serie de la cédula de identidad del organizador.')
       .placeholder('Número de serie')
       .ariaLabel('Obtener número de serie')
@@ -60,7 +56,6 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
       }).then(
         function (response) {
           $mdDialog.show($mdDialog.alert()
-            .title('Envío del acta')
             .textContent('El acta ha sido enviada con exito.')
             .ariaLabel('Envío del acta')
             .ok('OK')
