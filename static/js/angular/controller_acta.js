@@ -3,16 +3,16 @@
 angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http) {
 
   $scope.agregarParticipante = function () {
-    if ($scope.participantes.length < 10) {
-      $scope.participantes.push({nombre: '', apellido: ''});
+    if ($scope.acta.participantes.length < 10) {
+      $scope.acta.participantes.push({nombre: '', apellido: ''});
     }
   };
 
   $scope.quitarParticipante = function (index) {
-    if ($scope.participantes.length == 4) {
+    if ($scope.acta.participantes.length == 4) {
       return;
     }
-    $scope.participantes.splice(index, 1);
+    $scope.acta.participantes.splice(index, 1);
   };
 
   $scope.subirActa = function () {
@@ -47,17 +47,24 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
     $scope.provincias = [];
     $scope.comunas = [];
 
-    $scope.$watch('acta.geo.region', function () {
-      $scope.acta.geo.provincia = undefined;
-      $scope.acta.geo.comuna = undefined;
+    $http({
+      method: 'GET',
+      url: '/actas/base'
+    }).then(function (response) {
+      $scope.acta = response.data;
 
-      filtrarProvincias();
-    });
+      $scope.$watch('acta.geo.region', function () {
+        $scope.acta.geo.provincia = undefined;
+        $scope.acta.geo.comuna = undefined;
 
-    $scope.$watch('acta.geo.provincia', function () {
-      $scope.acta.geo.comuna = undefined;
+        filtrarProvincias();
+      });
 
-      filtrarComunas();
+      $scope.$watch('acta.geo.provincia', function () {
+        $scope.acta.geo.comuna = undefined;
+
+        filtrarComunas();
+      });
     });
 
     $http({
@@ -83,45 +90,6 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   };
 
   $scope.acta = {};
-
-  $scope.acta.geo = {};
-  $scope.acta.organizador = {};
-  $scope.acta.participantes = [{}, {}, {}, {}];
-
-  $scope.acta.itemsGroups = [
-    {
-      nombre: 'EDUCACIÓN PÚBLICA',
-      descripcion: '¿Cuáles son los VALORES Y PRINCIPIOS más importantes que deben inspirar y dar sustento a la educación pública?',
-      items: [
-        {nombre: 'Principio A'},
-        {nombre: 'Principio B'},
-        {nombre: 'Principio C'},
-      ]
-    },
-    {
-      nombre: 'DERECHOS',
-      descripcion: '¿Cuáles son los DERECHOS más importantes que la educación pública debiera establecer para todas las personas?',
-      items: [
-        {nombre: 'Principio D'},
-        {nombre: 'Principio E'},
-        {nombre: 'Principio F'},
-      ]
-    },
-    // {
-    //   nombre: 'DEBERES Y RESPONSABILIDADES',
-    //   descripcion: '¿Cuáles son los DEBERES Y RESPONSABILIDADES más importantes que la Constitución debiera establecer para todas las personas?',
-    //   items: [
-    //     {nombre: ''}
-    //   ]
-    // },
-    // {
-    //   nombre: 'INSTITUCIONES',
-    //   descripcion: '¿Qué INSTITUCIONES debe contemplar la Constitución?',
-    //   items: [
-    //     {nombre: ''}
-    //   ]
-    // }
-  ];
 
   cargarDatos();
 });
