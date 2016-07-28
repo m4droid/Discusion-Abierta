@@ -11,6 +11,10 @@ from .libs import verificar_rut, verificar_cedula
 from .models import Comuna, Acta, Item, GrupoItems, ActaRespuestaItem
 
 
+PARTICIPANTES_MIN = 5
+PARTICIPANTES_MAX = 10
+
+
 def index(request):
     return render(request, 'index.html')
 
@@ -26,8 +30,7 @@ def subir(request):
 def obtener_base(request):
     acta = {
         'geo': {},
-        'organizador': {},
-        'participantes': [{}, {}, {}, {}]
+        'participantes': [{} for _ in range(PARTICIPANTES_MIN)]
     }
 
     acta['itemsGroups'] = [g.to_dict() for g in GrupoItems.objects.all().order_by('orden')]
@@ -88,7 +91,7 @@ def _validar_participantes(acta):
 
     participantes = acta.get('participantes', [])
 
-    if type(participantes) != list or not (4 <= len(participantes) <= 10):
+    if type(participantes) != list or not (PARTICIPANTES_MIN <= len(participantes) <= PARTICIPANTES_MAX):
         errores.append('Error en el formato de los participantes.')
         return errores
 
@@ -98,24 +101,16 @@ def _validar_participantes(acta):
     if len(errores) > 0:
         return errores
 
-    rut_organizador = acta.get('organizador', {}).get('rut')
-
-    if not verificar_rut(rut_organizador):
-        return ['El RUT del organizador no es válido']
-
     ruts_participantes = [p['rut'] for p in participantes]
 
-    if rut_organizador in ruts_participantes:
-        return ['El organizador está dentro de la lista de participantes.']
-
     # Ruts diferentes
-    ruts = set(ruts_participantes + [rut_organizador])
-    if not (5 <= len(ruts) <= 11):
+    ruts = set(ruts_participantes)
+    if not (PARTICIPANTES_MIN <= len(ruts) <= PARTICIPANTES_MAX):
         return ['Existen RUTs repetidos']
 
     # Nombres diferentes
     nombres = set(
-        (p['nombre'].lower(), p['apellido'].lower(), ) for p in (participantes + [acta['organizador']])
+        (p['nombre'].lower(), p['apellido'].lower(), ) for p in participantes
     )
     if not (5 <= len(nombres) <= 11):
         return ['Existen nombres repetidos']
@@ -126,6 +121,17 @@ def _validar_participantes(acta):
     if len(participantes_en_db) > 0:
         for participante in participantes_en_db:
             errores.append('El RUT {0:s} ya participó del proceso.'.format(participante.username))
+
+    return errores
+
+
+def _validar_cedula_participantes(acta):
+    errores = []
+
+    participantes = acta.get('participantes', [])
+
+    for participante in participantes:
+        errores += verificar_cedula(participante.get('rut'), participante.get('serie_cedula'))
 
     return errores
 
@@ -167,12 +173,8 @@ def _crear_usuario(datos_usuario):
 
 
 def _guardar_acta(datos_acta):
-    organizador = _crear_usuario(datos_acta['organizador'])
-
     acta = Acta(
-        comuna=Comuna.objects.get(pk=datos_acta['geo']['comuna']['pk']),
-        direccion=datos_acta['geo']['direccion'],
-        organizador=organizador,
+        comuna=Comuna.objects.get(pk=datos_acta['geo']['comuna']),
         memoria_historica=datos_acta.get('memoria'),
         fecha=timezone.now(),
     )
@@ -203,9 +205,10 @@ def _validar(request):
     acta = request.body.decode('utf-8')
     acta = json.loads(acta)
 
-    for e in [_validar_datos_geograficos(acta), _validar_participantes(acta), _validar_items(acta)]:
-        if len(e) > 0:
-            return (acta, e,)
+    for func_val in [_validar_datos_geograficos, _validar_participantes, _validar_items]:
+        errores = func_val(acta)
+        if len(errores) > 0:
+            return (acta, errores,)
 
     return (acta, [],)
 
@@ -227,11 +230,10 @@ def subir_confirmar(request):
     if len(errores) > 0:
         return JsonResponse({'status': 'error', 'mensajes': errores}, status=400)
 
-    organizador = acta.get('organizador', {})
-
-    errores = verificar_cedula(organizador.get('rut'), organizador.get('serie'))
+    errores = _validar_cedula_participantes(acta)
 
     if len(errores) == 0:
         _guardar_acta(acta)
         return JsonResponse({'status': 'success', 'mensajes': ['El acta ha sido ingresada exitosamente.']})
+
     return JsonResponse({'status': 'error', 'mensajes': errores}, status=400)

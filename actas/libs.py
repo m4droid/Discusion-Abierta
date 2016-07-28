@@ -58,10 +58,10 @@ def verificar_cedula(rut_con_dv, serie):
     if type(rut_con_dv) not in [str, unicode] \
             or len(rut_con_dv) == 0 \
             or not verificar_rut(rut_con_dv):
-        result.append('RUT inválido')
+        result.append('RUT inválido ({0})'.format(rut_con_dv) if rut_con_dv is not None and len(rut_con_dv) > 0 else 'RUT inválido')
 
     if type(serie) not in [str, unicode] or len(serie) == 0:
-        result.append('Número de serie inválido')
+        result.append('Número de serie inválido para el RUT {0:s}'.format(rut_con_dv) if rut_con_dv is not None and len(rut_con_dv) > 0 else 'Número de serie inválido')
 
     if len(result) > 0:
         return result
@@ -80,12 +80,12 @@ def verificar_cedula(rut_con_dv, serie):
     vigente = document('table#tableResult td.setWidthOfSecondColumn').text().upper() == 'VIGENTE'
 
     if rut_con_dv != verificacion_rut:
-        result.append('RUT no coincide')
+        result.append('RUT no coincide para el RUT {0:s}'.format(rut_con_dv))
 
     if serie != verificacion_serie:
-        result.append('Número de serie no coincide')
+        result.append('Número de serie no coincide para el rut {0:s}'.format(rut_con_dv))
 
     if not vigente:
-        result.append('El documento de identidad no está vigente')
+        result.append('El documento de identidad no está vigente para el RUT {0:s}'.format(rut_con_dv))
 
     return result

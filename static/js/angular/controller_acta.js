@@ -11,7 +11,7 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   };
 
   $scope.quitarParticipante = function (index) {
-    if ($scope.acta.participantes.length == 4) {
+    if ($scope.acta.participantes.length == 5) {
       return;
     }
     $scope.acta.participantes.splice(index, 1);
@@ -39,37 +39,22 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   };
 
   var confirmarActa = function (ev) {
-    var confirm = $mdDialog.prompt()
-      .clickOutsideToClose(true)
-      .textContent('Antes de enviar el acta se necesita comprobar el número de serie de la cédula de identidad del organizador.')
-      .placeholder('Número de serie')
-      .ariaLabel('Obtener número de serie')
-      .targetEvent(ev)
-      .ok('Enviar')
-      .cancel('Cancelar');
-
-    $mdDialog.show(confirm).then(function (result) {
-      $scope.acta.organizador.serie = result;
-
-      $http({
-        method: 'POST',
-        url: '/actas/subir/confirmar',
-        data: $scope.acta
-      }).then(
-        function (response) {
-          $mdDialog.show($mdDialog.alert()
-            .textContent('El acta ha sido enviada con exito.')
-            .ariaLabel('Envío del acta')
-            .ok('OK')
-            .targetEvent(ev));
-        },
-        function (response) {
-          mostrarErrores(ev, response.data.mensajes);
-        }
-      );
-    }, function () {
-      $scope.acta.organizador.serie = undefined;
-    });
+    $http({
+      method: 'POST',
+      url: '/actas/subir/confirmar',
+      data: $scope.acta
+    }).then(
+      function (response) {
+        $mdDialog.show($mdDialog.alert()
+          .textContent('El acta ha sido enviada con exito.')
+          .ariaLabel('Envío del acta')
+          .ok('OK')
+          .targetEvent(ev));
+      },
+      function (response) {
+        mostrarErrores(ev, response.data.mensajes);
+      }
+    );
   };
 
   $scope.validarActa = function (ev) {
@@ -144,9 +129,19 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   };
 
   $scope.limpiarActa = function (ev) {
-    localStorageService.remove(LOCALSTORAGE_ACTA_KEY);
 
-    cargarDatos();
+    var confirm = $mdDialog.confirm()
+      .clickOutsideToClose(true)
+      .textContent('¿Estás seguro de que quieres limpiar los datos del acta?')
+      .ariaLabel('Obtener número de serie')
+      .targetEvent(ev)
+      .ok('Limpiar')
+      .cancel('Cancelar');
+
+    $mdDialog.show(confirm).then(function (result) {
+      localStorageService.remove(LOCALSTORAGE_ACTA_KEY);
+      cargarDatos();
+    });
   };
 
   $scope.acta = {

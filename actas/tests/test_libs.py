@@ -62,7 +62,7 @@ class LibsValidarCedulaTestCase(TestCase):
 
     def test_serie_vacio(self):
         expected = [
-            'Número de serie inválido',
+            'Número de serie inválido para el RUT 1-9',
         ]
 
         for params in [('1-9', None), ('1-9', '')]:
@@ -71,7 +71,7 @@ class LibsValidarCedulaTestCase(TestCase):
 
     def test_rut_invalido(self):
         expected = [
-            'RUT inválido',
+            'RUT inválido (1-8)',
         ]
 
         result = verificar_cedula('1-8', 'A')
@@ -93,7 +93,7 @@ class LibsValidarCedulaTestCase(TestCase):
             'verificacion_cedula_registro_civil_no_vigente.htm'
         )
 
-        expected = ['El documento de identidad no está vigente']
+        expected = ['El documento de identidad no está vigente para el RUT 1-9']
 
         result = verificar_cedula('1-9', 'A')
 

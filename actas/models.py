@@ -70,7 +70,6 @@ class Acta(models.Model):
     fecha = models.DateTimeField()
     comuna = models.ForeignKey(Comuna)
 
-    organizador = models.ForeignKey(User)
     participantes = models.ManyToManyField(User, related_name='participantes')
     memoria_historica = models.TextField(blank=True, null=True)
 
