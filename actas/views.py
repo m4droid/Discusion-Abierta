@@ -6,6 +6,7 @@ from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from .libs import verificar_rut, verificar_cedula
 from .models import Comuna, Acta, Item, GrupoItems, ActaRespuestaItem
@@ -23,6 +24,7 @@ def lista(request):
     return render(request, 'lista.html')
 
 
+@ensure_csrf_cookie
 def subir(request):
     return render(request, 'subir.html')
 
