@@ -69,7 +69,6 @@ class Item(models.Model):
 class Acta(models.Model):
     fecha = models.DateTimeField()
     comuna = models.ForeignKey(Comuna)
-    direccion = models.CharField(max_length=256)
 
     organizador = models.ForeignKey(User)
     participantes = models.ManyToManyField(User, related_name='participantes')

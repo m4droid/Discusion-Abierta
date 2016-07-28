@@ -42,29 +42,24 @@ def _validar_datos_geograficos(acta):
     provincia_seleccionada = acta.get('geo', {}).get('provincia')
     region_seleccionada = acta.get('geo', {}).get('region')
 
-    direccion = acta.get('geo', {}).get('direccion')
-
-    if type(direccion) not in [str, unicode] or len(direccion) < 5:
-        return ['Dirección inválida']
-
-    if type(region_seleccionada) != dict:
+    if type(region_seleccionada) != int:
         return ['Región inválida']
 
-    if type(provincia_seleccionada) != dict:
+    if type(provincia_seleccionada) != int:
         return ['Provincia inválida']
 
-    if type(comuna_seleccionada) != dict:
+    if type(comuna_seleccionada) != int:
         return ['Comuna inválida']
 
-    comunas = Comuna.objects.filter(pk=comuna_seleccionada['pk'])
+    comunas = Comuna.objects.filter(pk=comuna_seleccionada)
 
     if len(comunas) != 1:
         errores.append('Comuna inválida.')
     else:
-        if comunas[0].provincia.pk != provincia_seleccionada['pk']:
+        if comunas[0].provincia.pk != provincia_seleccionada:
             errores.append('Provincia no corresponde a la comuna.')
 
-        if comunas[0].provincia.region.pk != region_seleccionada['pk']:
+        if comunas[0].provincia.region.pk != region_seleccionada:
             errores.append('Región no corresponde a la provincia.')
 
     return errores

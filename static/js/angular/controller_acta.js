@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http, $mdDialog) {
+var LOCALSTORAGE_ACTA_KEY = 'acta';
+
+angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http, $mdDialog, localStorageService) {
 
   $scope.agregarParticipante = function () {
     if ($scope.acta.participantes.length < 10) {
@@ -90,7 +92,7 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
       if ($scope.acta.geo.region === undefined) {
         return false;
       }
-      return provincia.fields.region === $scope.acta.geo.region.pk;
+      return provincia.fields.region === $scope.acta.geo.region;
     });
   };
 
@@ -99,57 +101,87 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
       if ($scope.acta.geo.provincia === undefined) {
         return false;
       }
-      return comuna.fields.provincia === $scope.acta.geo.provincia.pk;
+      return comuna.fields.provincia === $scope.acta.geo.provincia;
     });
+  };
+
+  var cargarWatchersGeo = function () {
+    $scope.$watch('acta.geo.region', function () {
+      if ( ! String($scope.acta.geo.provincia).startsWith(String($scope.acta.geo.region))) {
+        delete $scope.acta.geo.provincia;
+      }
+      if ( ! String($scope.acta.geo.comuna).startsWith(String($scope.acta.geo.provincia))) {
+        delete $scope.acta.geo.comuna;
+      }
+      filtrarProvincias();
+    });
+
+    $scope.$watch('acta.geo.provincia', function () {
+      if ( ! String($scope.acta.geo.comuna).startsWith(String($scope.acta.geo.provincia))) {
+        delete $scope.acta.geo.comuna;
+      }
+      filtrarComunas();
+    });
+  };
+
+  var cargarWatchersActa = function () {
+    $scope.$watch('acta', function () {
+      localStorageService.set(LOCALSTORAGE_ACTA_KEY, $scope.acta);
+    }, true);
   };
 
   var cargarDatos = function () {
-    $scope.provincias = [];
-    $scope.comunas = [];
-
-    $http({
-      method: 'GET',
-      url: '/actas/base'
-    }).then(function (response) {
-      $scope.acta = response.data;
-
-      $scope.$watch('acta.geo.region', function () {
-        $scope.acta.geo.provincia = undefined;
-        $scope.acta.geo.comuna = undefined;
-
-        filtrarProvincias();
+    if (localStorageService.get(LOCALSTORAGE_ACTA_KEY) !== null) {
+      $scope.acta = localStorageService.get(LOCALSTORAGE_ACTA_KEY);
+    } else {
+      $http({
+        method: 'GET',
+        url: '/actas/base'
+      }).then(function (response) {
+        $scope.acta = response.data;
       });
-
-      $scope.$watch('acta.geo.provincia', function () {
-        $scope.acta.geo.comuna = undefined;
-
-        filtrarComunas();
-      });
-    });
-
-    $http({
-      method: 'GET',
-      url: '/static/json/regiones.json'
-    }).then(function (response) {
-      $scope.regiones = response.data;
-    });
-
-    $http({
-      method: 'GET',
-      url: '/static/json/provincias.json'
-    }).then(function (response) {
-      $scope.provincias = response.data;
-    });
-
-    $http({
-      method: 'GET',
-      url: '/static/json/comunas.json'
-    }).then(function (response) {
-      $scope.comunas = response.data;
-    });
+    }
   };
 
-  $scope.acta = {};
+  $scope.limpiarActa = function (ev) {
+    localStorageService.remove(LOCALSTORAGE_ACTA_KEY);
 
+    cargarDatos();
+  };
+
+  $scope.acta = {
+    geo: {}
+  };
+
+  $scope.regiones = [];
+  $scope.provincias = [];
+  $scope.comunas = [];
+
+  cargarWatchersGeo();
+
+  $http({
+    method: 'GET',
+    url: '/static/json/regiones.json'
+  }).then(function (response) {
+    $scope.regiones = response.data;
+  });
+
+  $http({
+    method: 'GET',
+    url: '/static/json/provincias.json'
+  }).then(function (response) {
+    $scope.provincias = response.data;
+    filtrarProvincias();
+  });
+
+  $http({
+    method: 'GET',
+    url: '/static/json/comunas.json'
+  }).then(function (response) {
+    $scope.comunas = response.data;
+    filtrarComunas();
+  });
+
+  cargarWatchersActa();
   cargarDatos();
 });
