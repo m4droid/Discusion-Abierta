@@ -59,8 +59,6 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
       targetEvent: ev,
       clickOutsideToClose: true,
     }).then(function (result) {
-      $scope.noValidar = true;
-
       $http({
         method: 'POST',
         url: '/actas/subir/confirmar',
@@ -79,9 +77,13 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
           $scope.noValidar = false;
         }
       );
+    }, function (result) {
+      $scope.noValidar = false;
     });
   };
   $scope.validarActa = function (ev) {
+    $scope.noValidar = true;
+
     $http({
       method: 'POST',
       url: '/actas/subir/validar',
@@ -92,6 +94,7 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
       },
       function (response) {
         mostrarErrores(ev, response.data.mensajes);
+        $scope.noValidar = false;
       }
     );
   };
