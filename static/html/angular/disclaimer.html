@@ -1,0 +1,20 @@
+<md-dialog aria-label="Disclaimer" ng-cloak>
+  <form>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h4>Disclaimer</h4>
+        <p>Todo parece estar en orden. Antes de enviar el acta se deben aceptar los siguientes términos y condiciones:</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius turpis ut enim vehicula facilisis. Nulla a ullamcorper quam, vel mollis nunc. Suspendisse faucibus tortor augue, sit amet mollis eros ullamcorper eu. Nunc est tellus, lacinia a dui auctor, tristique lacinia mauris. Etiam suscipit ipsum nibh, ac posuere est bibendum non. Aliquam interdum nunc ac velit aliquam vestibulum. Praesent luctus, velit vel rutrum tristique, nisi mauris elementum magna, ac dapibus velit diam in lacus. Curabitur consectetur nulla ut urna tristique vestibulum. Vestibulum eros turpis, congue in nulla nec, auctor accumsan purus. Nullam porta massa libero, eget posuere ipsum facilisis eget. Integer dictum nunc nibh. Sed aliquet nisl urna, ut consequat augue scelerisque sit amet. Suspendisse dapibus venenatis erat, vel eleifend neque iaculis id. Maecenas justo ante, lobortis ut consequat ac, aliquet nec nibh. Integer sit amet dapibus urna. Nullam blandit ex posuere, pharetra risus ut, maximus tortor.</p>
+        <p>Nullam faucibus accumsan venenatis. In hendrerit odio vel feugiat sollicitudin. Nulla tempus metus eget erat scelerisque, aliquet suscipit est sodales. Aliquam erat volutpat. Suspendisse faucibus vehicula velit, sed euismod augue interdum ac. Duis eget lacinia est. Phasellus sed imperdiet elit. Proin auctor commodo eros eget condimentum. Mauris dignissim tempus elit et cursus. Duis euismod molestie tristique.</p>
+        <p>Mauris ut arcu malesuada, ullamcorper tortor ut, pretium metus. Curabitur sit amet accumsan eros. Donec blandit posuere ex, sed sollicitudin felis hendrerit nec. Quisque sem urna, tempor sed congue quis, aliquam id lectus. Donec id sagittis mi. Etiam suscipit aliquam ipsum in viverra. Sed feugiat dapibus rutrum. Nam erat velit, vehicula eleifend hendrerit in, molestie sit amet lectus. Phasellus ut est faucibus, vestibulum neque sed, bibendum enim. Quisque et lorem sed orci pharetra sagittis id et enim. Pellentesque lobortis lorem in turpis vestibulum, ut sagittis erat consequat. Duis non quam eu neque interdum vestibulum nec in nibh.</p>
+        <div flex>
+          <md-checkbox ng-model="aceptamos" aria-label="Checkbox aceptamos">Aceptamos las condiciones</md-checkbox>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-raised md-warn" ng-click="rechazan()">Cancelar</md-button>  
+      <md-button class="md-raised md-primary" ng-click="aceptan()" ng-disabled="! aceptamos">Enviar</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

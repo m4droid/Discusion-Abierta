@@ -36,7 +36,7 @@
             </div>
             <div layout="column" class="md-inline-form" style="padding: 50px;">
               <md-content class="centrar_texto">
-                <md-button class="md-raised" aria-label="Subir acta" ng-click="limpiarActa($event)">Limpiar acta</md-button>
+                <md-button class="md-raised md-warn" aria-label="Subir acta" ng-click="limpiarActa($event)">Limpiar acta</md-button>
               </md-content>
             </div>
           </md-content>
@@ -48,7 +48,7 @@
               <md-button class="md-fab md-mini" aria-label="Agregar participante" ng-click="agregarParticipante()">+</md-button>
             </h2>
             <div layout-xs="column" layout-gt-xs="row" ng-repeat="participante in acta.participantes">
-              <md-input-container flex flex-sm-xs=5>
+              <md-input-container class="centrar_texto" flex flex-sm-xs=5>
                 <div style="color: #ccc; margin-top: 8px;">{$ ($index + 1) $}.</div>
               </md-input-container>
               <md-input-container flex>
@@ -67,13 +67,13 @@
                 <label>Número de serie de cédula</label>
                 <input ng-model="participante.serie_cedula" required />
               </md-input-container>
-              <md-input-container flex flex-sm-xs=10>
+              <md-input-container class="centrar_texto" flex flex-sm-xs=10>
                 <md-button class="md-fab md-mini" aria-label="Quitar participante" ng-click="quitarParticipante($index)">-</md-button>
               </md-input-container>
             </div>
             <div layout="column" class="md-inline-form" style="padding: 50px;">
               <md-content class="centrar_texto">
-                <md-button class="md-raised" aria-label="Subir acta" ng-click="limpiarActa($event)">Limpiar acta</md-button>
+                <md-button class="md-raised md-warn" aria-label="Subir acta" ng-click="limpiarActa($event)">Limpiar acta</md-button>
               </md-content>
             </div>
           </md-content>
@@ -125,8 +125,8 @@
             </div>
             <div layout="column" class="md-inline-form" style="padding: 50px;">
               <md-content class="centrar_texto">
-                <md-button class="md-raised" aria-label="Subir acta" ng-click="limpiarActa($event)">Limpiar acta</md-button>
-                <md-button class="md-raised md-primary" aria-label="Subir acta" ng-click="validarActa($event)">Validar acta</md-button>
+                <md-button class="md-raised md-warn" aria-label="Subir acta" ng-click="limpiarActa($event)">Limpiar acta</md-button>
+                <md-button class="md-raised md-primary" aria-label="Subir acta" ng-click="validarActa($event)" ng-disabled="noValidar">Validar acta</md-button>
               </md-content>
             </div>
           </md-content>

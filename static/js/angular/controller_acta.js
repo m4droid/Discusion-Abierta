@@ -5,13 +5,13 @@ var LOCALSTORAGE_ACTA_KEY = 'acta';
 angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http, $mdDialog, localStorageService) {
 
   $scope.agregarParticipante = function () {
-    if ($scope.acta.participantes.length < 10) {
+    if ($scope.acta.participantes.length < $scope.acta.max_participantes) {
       $scope.acta.participantes.push({nombre: '', apellido: ''});
     }
   };
 
   $scope.quitarParticipante = function (index) {
-    if ($scope.acta.participantes.length == 5) {
+    if ($scope.acta.participantes.length == $scope.acta.min_participantes) {
       return;
     }
     $scope.acta.participantes.splice(index, 1);
@@ -22,6 +22,19 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
 
     $scope.close = function () {
       $mdDialog.hide();
+    };
+  };
+
+  var DialogDisclaimerCtrl = function ($scope, $mdDialog) {
+
+    $scope.aceptamos = false;
+
+    $scope.aceptan = function () {
+      $mdDialog.hide();
+    };
+
+    $scope.rechazan = function () {
+      $mdDialog.cancel();
     };
   };
 
@@ -39,24 +52,35 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   };
 
   var confirmarActa = function (ev) {
-    $http({
-      method: 'POST',
-      url: '/actas/subir/confirmar',
-      data: $scope.acta
-    }).then(
-      function (response) {
-        $mdDialog.show($mdDialog.alert()
-          .textContent('El acta ha sido enviada con exito.')
-          .ariaLabel('Envío del acta')
-          .ok('OK')
-          .targetEvent(ev));
-      },
-      function (response) {
-        mostrarErrores(ev, response.data.mensajes);
-      }
-    );
-  };
+    $mdDialog.show({
+      controller: DialogDisclaimerCtrl,
+      templateUrl: '/static/html/angular/disclaimer.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+    }).then(function (result) {
+      $scope.noValidar = true;
 
+      $http({
+        method: 'POST',
+        url: '/actas/subir/confirmar',
+        data: $scope.acta
+      }).then(
+        function (response) {
+          $mdDialog.show($mdDialog.alert()
+            .textContent('El acta ha sido enviada con exito.')
+            .ariaLabel('Envío del acta')
+            .ok('OK')
+            .targetEvent(ev));
+          $scope.noValidar = false;
+        },
+        function (response) {
+          mostrarErrores(ev, response.data.mensajes);
+          $scope.noValidar = false;
+        }
+      );
+    });
+  };
   $scope.validarActa = function (ev) {
     $http({
       method: 'POST',

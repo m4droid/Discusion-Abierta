@@ -12,7 +12,7 @@ from .libs import verificar_rut, verificar_cedula
 from .models import Comuna, Acta, Item, GrupoItems, ActaRespuestaItem
 
 
-PARTICIPANTES_MIN = 5
+PARTICIPANTES_MIN = 4
 PARTICIPANTES_MAX = 10
 
 
@@ -31,6 +31,8 @@ def subir(request):
 
 def obtener_base(request):
     acta = {
+        'min_participantes': PARTICIPANTES_MIN,
+        'max_participantes': PARTICIPANTES_MAX,
         'geo': {},
         'participantes': [{} for _ in range(PARTICIPANTES_MIN)]
     }
@@ -114,7 +116,7 @@ def _validar_participantes(acta):
     nombres = set(
         (p['nombre'].lower(), p['apellido'].lower(), ) for p in participantes
     )
-    if not (5 <= len(nombres) <= 11):
+    if not (PARTICIPANTES_MIN <= len(nombres) <= PARTICIPANTES_MAX):
         return ['Existen nombres repetidos']
 
     # Verificar que los participantes no hayan enviado una acta antes
