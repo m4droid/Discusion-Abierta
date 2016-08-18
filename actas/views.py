@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.conf import settings
 from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from .libs import validar_acta_json, validar_cedulas_participantes, guardar_acta
+from .libs import validar_acta_json, validar_cedulas_participantes, guardar_acta, obtener_config
 
 from .models import GrupoItems
 
@@ -25,18 +24,13 @@ def subir(request):
 
 def acta_base(request):
 
-    participantes_min = 4
-    participantes_max = 10
-
-    if hasattr(settings, 'DISCUSION_ABIERTA') and type(settings.DISCUSION_ABIERTA) == dict:
-        participantes_min = int(settings.DISCUSION_ABIERTA.get('PARTICIPANTES_MIN', participantes_min))
-        participantes_max = int(settings.DISCUSION_ABIERTA.get('PARTICIPANTES_MAX', participantes_max))
+    config = obtener_config()
 
     acta = {
-        'min_participantes': participantes_min,
-        'max_participantes': participantes_max,
+        'min_participantes': config['participantes_min'],
+        'max_participantes': config['participantes_max'],
         'geo': {},
-        'participantes': [{} for _ in range(participantes_min)]
+        'participantes': [{} for _ in range(config['participantes_min'])]
     }
 
     acta['itemsGroups'] = [g.to_dict() for g in GrupoItems.objects.all().order_by('orden')]

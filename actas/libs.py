@@ -3,12 +3,12 @@ import json
 from itertools import cycle
 import re
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils import timezone
 from pyquery import PyQuery as pq
 import requests
 
-from .apps import ActasConfig
 from .models import Comuna, Acta, Item, ActaRespuestaItem
 
 
@@ -109,13 +109,13 @@ def validar_datos_geograficos(acta):
     region_seleccionada = acta.get('geo', {}).get('region')
 
     if type(region_seleccionada) != int:
-        return ['Región inválida']
+        return ['Región inválida.']
 
     if type(provincia_seleccionada) != int:
-        return ['Provincia inválida']
+        return ['Provincia inválida.']
 
     if type(comuna_seleccionada) != int:
-        return ['Comuna inválida']
+        return ['Comuna inválida.']
 
     comunas = Comuna.objects.filter(pk=comuna_seleccionada)
 
@@ -127,6 +127,48 @@ def validar_datos_geograficos(acta):
 
         if comunas[0].provincia.region.pk != region_seleccionada:
             errores.append('Región no corresponde a la provincia.')
+
+    return errores
+
+
+def validar_participantes(acta):
+    errores = []
+
+    participantes = acta.get('participantes', [])
+
+    config = obtener_config()
+
+    if type(participantes) != list \
+            or not (config['participantes_min'] <= len(participantes) <= config['participantes_max']):
+        errores.append('Error en el formato de los participantes.')
+        return errores
+
+    for i, participante in enumerate(participantes):
+        errores += _validar_participante(participante, i + 1)
+
+    if len(errores) > 0:
+        return errores
+
+    ruts_participantes = [p['rut'] for p in participantes]
+
+    # Ruts diferentes
+    ruts = set(ruts_participantes)
+    if not (config['participantes_min'] <= len(ruts) <= config['participantes_max']):
+        return ['Existen RUTs repetidos']
+
+    # Nombres diferentes
+    nombres = set(
+        (p['nombre'].lower(), p['apellido'].lower(), ) for p in participantes
+    )
+    if not (config['participantes_min'] <= len(nombres) <= config['participantes_max']):
+        return ['Existen nombres repetidos']
+
+    # Verificar que los participantes no hayan enviado una acta antes
+    participantes_en_db = User.objects.filter(username__in=list(ruts))
+
+    if len(participantes_en_db) > 0:
+        for participante in participantes_en_db:
+            errores.append('El RUT {0:s} ya participó del proceso.'.format(participante.username))
 
     return errores
 
@@ -145,46 +187,6 @@ def _validar_participante(participante, pos):
 
     if type(apellido) not in [str, unicode] or len(apellido) < 2:
         errores.append('Apellido del participante {0:d} es inválido.'.format(pos))
-
-    return errores
-
-
-def validar_participantes(acta):
-    errores = []
-
-    participantes = acta.get('participantes', [])
-
-    if type(participantes) != list \
-            or not (ActasConfig.participantes_min <= len(participantes) <= ActasConfig.participantes_max):
-        errores.append('Error en el formato de los participantes.')
-        return errores
-
-    for i, participante in enumerate(participantes):
-        errores += _validar_participante(participante, i + 1)
-
-    if len(errores) > 0:
-        return errores
-
-    ruts_participantes = [p['rut'] for p in participantes]
-
-    # Ruts diferentes
-    ruts = set(ruts_participantes)
-    if not (ActasConfig.participantes_min <= len(ruts) <= ActasConfig.participantes_max):
-        return ['Existen RUTs repetidos']
-
-    # Nombres diferentes
-    nombres = set(
-        (p['nombre'].lower(), p['apellido'].lower(), ) for p in participantes
-    )
-    if not (ActasConfig.participantes_min <= len(nombres) <= ActasConfig.participantes_max):
-        return ['Existen nombres repetidos']
-
-    # Verificar que los participantes no hayan enviado una acta antes
-    participantes_en_db = User.objects.filter(username__in=list(ruts))
-
-    if len(participantes_en_db) > 0:
-        for participante in participantes_en_db:
-            errores.append('El RUT {0:s} ya participó del proceso.'.format(participante.username))
 
     return errores
 
@@ -226,14 +228,6 @@ def validar_items(acta):
                 )
 
     return errores
-
-
-def _crear_usuario(datos_usuario):
-    usuario = User(username=datos_usuario['rut'])
-    usuario.first_name = datos_usuario['nombre']
-    usuario.last_name = datos_usuario['apellido']
-    usuario.save()
-    return usuario
 
 
 def guardar_acta(datos_acta):
@@ -279,3 +273,28 @@ def validar_acta_json(request):
             return (acta, errores,)
 
     return (acta, [],)
+
+
+def obtener_config():
+    config = {
+        'participantes_min': 4,
+        'participantes_max': 10,
+    }
+
+    if hasattr(settings, 'DISCUSION_ABIERTA') and type(settings.DISCUSION_ABIERTA) == dict:
+        config['participantes_min'] = int(
+            settings.DISCUSION_ABIERTA.get('PARTICIPANTES_MIN', config['participantes_min'])
+        )
+        config['participantes_max'] = int(
+            settings.DISCUSION_ABIERTA.get('PARTICIPANTES_MAX', config['participantes_max'])
+        )
+
+    return config
+
+
+def _crear_usuario(datos_usuario):
+    usuario = User(username=datos_usuario['rut'])
+    usuario.first_name = datos_usuario['nombre']
+    usuario.last_name = datos_usuario['apellido']
+    usuario.save()
+    return usuario
