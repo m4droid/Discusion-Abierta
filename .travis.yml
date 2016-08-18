@@ -5,7 +5,9 @@ install:
   - pip install -r requirements.txt
   - pip install -r requirements-test.txt
   - pip install coveralls
-before_script: python manage.py migrate
+before_script:
+  - cp discusion_abierta/settings.py{.default,}
+  - python manage.py migrate
 script: coverage run manage.py test
 after_success:
   - coveralls
