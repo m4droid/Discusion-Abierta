@@ -154,17 +154,17 @@ def validar_participantes(acta):
     # Ruts diferentes
     ruts = set(ruts_participantes)
     if not (config['participantes_min'] <= len(ruts) <= config['participantes_max']):
-        return ['Existen RUTs repetidos']
+        return ['Existen RUTs repetidos.']
 
     # Nombres diferentes
     nombres = set(
         (p['nombre'].lower(), p['apellido'].lower(), ) for p in participantes
     )
     if not (config['participantes_min'] <= len(nombres) <= config['participantes_max']):
-        return ['Existen nombres repetidos']
+        return ['Existen nombres repetidos.']
 
-    # Verificar que los participantes no hayan enviado una acta antes
-    participantes_en_db = User.objects.filter(username__in=list(ruts))
+    # Verificar que los participantes no hayan enviado un acta antes
+    participantes_en_db = User.objects.prefetch_related('participantes').filter(username__in=list(ruts))
 
     if len(participantes_en_db) > 0:
         for participante in participantes_en_db:

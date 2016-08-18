@@ -1,0 +1,12 @@
+[
+{
+    "model": "actas.actarespuestaitem",
+    "pk": 1,
+    "fields": {
+        "acta": 1,
+        "item": 1,
+        "categoria": 1,
+        "fundamento": "D"
+    }
+}
+]

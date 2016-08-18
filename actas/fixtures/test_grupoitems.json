@@ -1,0 +1,11 @@
+[
+{
+    "model": "actas.grupoitems",
+    "pk": 1,
+    "fields": {
+        "nombre": "A",
+        "descripcion": "B",
+        "orden": 1
+    }
+}
+]

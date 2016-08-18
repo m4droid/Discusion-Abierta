@@ -1,0 +1,11 @@
+[
+{
+    "model": "actas.acta",
+    "pk": 1,
+    "fields": {
+        "fecha": "2016-07-18T00:01:00.000Z",
+        "comuna": 13101,
+        "participantes": [1]
+    }
+}
+]
