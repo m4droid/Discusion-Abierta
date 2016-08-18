@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-# from __future__ import unicode_literals
-
 import os
 
 from django.test import TestCase
-from mock import patch
+from mock import patch, MagicMock
 
 from ..libs import verificar_rut, verificar_cedula
 
@@ -94,6 +92,58 @@ class LibsValidarCedulaTestCase(TestCase):
         )
 
         expected = ['El documento de identidad no está vigente para el RUT 1-9']
+
+        result = verificar_cedula('1-9', 'A')
+
+        self.assertEquals(expected, result)
+
+    @patch('actas.libs.requests.get')
+    def test_validacion_regcivil_no_disponible(self, mock_requests):
+        mock = MagicMock()
+        mock.status_code = 404
+
+        mock_requests.side_effect = lambda *a, **ka: mock
+
+        expected = ['Validación de cédula no disponible.']
+
+        result = verificar_cedula('1-9', 'A')
+
+        self.assertEquals(expected, result)
+
+    @patch('actas.libs.requests.get')
+    def test_validacion_regcivil_ok(self, mock_requests):
+        mock = MagicMock()
+        mock.status_code = 200
+        mock.content = get_fixture_content(
+            'verificacion_cedula_registro_civil_vigente.htm'
+        )
+
+        mock_requests.side_effect = lambda *a, **ka: mock
+
+        result = verificar_cedula('1-9', 'A')
+
+        self.assertEquals([], result)
+
+    @patch('actas.libs.requests.get')
+    def test_validacion_regcivil_sin_coincidencias(self, mock_requests):
+        mock = MagicMock()
+        mock.status_code = 200
+        mock.content = get_fixture_content(
+            'verificacion_cedula_registro_civil_vigente.htm'
+        ).replace(
+            'name="form:run" value="1-9"',
+            'name="form:run" value="1-8"'
+        ).replace(
+            'name="form:docNumber" value="A"',
+            'name="form:docNumber" value="B"'
+        )
+
+        mock_requests.side_effect = lambda *a, **ka: mock
+
+        expected = [
+            'RUT no coincide para el RUT 1-9',
+            'Número de serie no coincide para el rut 1-9'
+        ]
 
         result = verificar_cedula('1-9', 'A')
 

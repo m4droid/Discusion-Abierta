@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
-# from __future__ import unicode_literals
-
+import json
 from itertools import cycle
 import re
 
+from django.contrib.auth.models import User
+from django.utils import timezone
 from pyquery import PyQuery as pq
 import requests
+
+from .apps import ActasConfig
+from .models import Comuna, Acta, Item, ActaRespuestaItem
 
 
 REGEX_RUT = re.compile(r'([0-9]+)\-([0-9K])', re.IGNORECASE)
@@ -68,7 +72,13 @@ def verificar_cedula(rut_con_dv, serie):
 
     serie = serie.upper()
 
-    html = _get_html_verificar_cedula(rut_con_dv, serie).replace(
+    html = _get_html_verificar_cedula(rut_con_dv, serie)
+
+    if html is None:
+        result.append('Validación de cédula no disponible.')
+        return result
+
+    html = html.replace(
         '<html xmlns="http://www.w3.org/1999/xhtml">',
         '<html>'
     )
@@ -89,3 +99,183 @@ def verificar_cedula(rut_con_dv, serie):
         result.append('El documento de identidad no está vigente para el RUT {0:s}'.format(rut_con_dv))
 
     return result
+
+
+def validar_datos_geograficos(acta):
+    errores = []
+
+    comuna_seleccionada = acta.get('geo', {}).get('comuna')
+    provincia_seleccionada = acta.get('geo', {}).get('provincia')
+    region_seleccionada = acta.get('geo', {}).get('region')
+
+    if type(region_seleccionada) != int:
+        return ['Región inválida']
+
+    if type(provincia_seleccionada) != int:
+        return ['Provincia inválida']
+
+    if type(comuna_seleccionada) != int:
+        return ['Comuna inválida']
+
+    comunas = Comuna.objects.filter(pk=comuna_seleccionada)
+
+    if len(comunas) != 1:
+        errores.append('Comuna inválida.')
+    else:
+        if comunas[0].provincia.pk != provincia_seleccionada:
+            errores.append('Provincia no corresponde a la comuna.')
+
+        if comunas[0].provincia.region.pk != region_seleccionada:
+            errores.append('Región no corresponde a la provincia.')
+
+    return errores
+
+
+def _validar_participante(participante, pos):
+    errores = []
+
+    if not verificar_rut(participante.get('rut')):
+        errores.append('RUT del participante {0:d} es inválido.'.format(pos))
+
+    nombre = participante.get('nombre')
+    apellido = participante.get('apellido')
+
+    if type(nombre) not in [str, unicode] or len(nombre) < 2:
+        errores.append('Nombre del participante {0:d} es inválido.'.format(pos))
+
+    if type(apellido) not in [str, unicode] or len(apellido) < 2:
+        errores.append('Apellido del participante {0:d} es inválido.'.format(pos))
+
+    return errores
+
+
+def validar_participantes(acta):
+    errores = []
+
+    participantes = acta.get('participantes', [])
+
+    if type(participantes) != list \
+            or not (ActasConfig.participantes_min <= len(participantes) <= ActasConfig.participantes_max):
+        errores.append('Error en el formato de los participantes.')
+        return errores
+
+    for i, participante in enumerate(participantes):
+        errores += _validar_participante(participante, i + 1)
+
+    if len(errores) > 0:
+        return errores
+
+    ruts_participantes = [p['rut'] for p in participantes]
+
+    # Ruts diferentes
+    ruts = set(ruts_participantes)
+    if not (ActasConfig.participantes_min <= len(ruts) <= ActasConfig.participantes_max):
+        return ['Existen RUTs repetidos']
+
+    # Nombres diferentes
+    nombres = set(
+        (p['nombre'].lower(), p['apellido'].lower(), ) for p in participantes
+    )
+    if not (ActasConfig.participantes_min <= len(nombres) <= ActasConfig.participantes_max):
+        return ['Existen nombres repetidos']
+
+    # Verificar que los participantes no hayan enviado una acta antes
+    participantes_en_db = User.objects.filter(username__in=list(ruts))
+
+    if len(participantes_en_db) > 0:
+        for participante in participantes_en_db:
+            errores.append('El RUT {0:s} ya participó del proceso.'.format(participante.username))
+
+    return errores
+
+
+def validar_cedulas_participantes(acta):
+    errores = []
+
+    participantes = acta.get('participantes', [])
+
+    for participante in participantes:
+        errores += verificar_cedula(participante.get('rut'), participante.get('serie_cedula'))
+
+    return errores
+
+
+def validar_items(acta):
+    errores = []
+
+    # TODO: Validar todos los items por DB
+
+    for group in acta['itemsGroups']:
+        for i, item in enumerate(group['items']):
+            acta_item = Item.objects.filter(pk=item.get('pk'))
+
+            if len(acta_item) != 1 or acta_item[0].nombre != item.get('nombre'):
+                errores.append(
+                    'Existen errores de validación en ítem {0:s} del grupo {1:s}.'.format(
+                        item.get('nombre').encode('utf-8'),
+                        group.get('nombre').encode('utf-8')
+                    )
+                )
+
+            if item.get('categoria') not in ['-1', '0', '1']:
+                errores.append(
+                    'No se ha seleccionado la categoría del ítem {0:s}, del grupo {1:s}.'.format(
+                        item.get('nombre').encode('utf-8'),
+                        group.get('nombre').encode('utf-8')
+                    )
+                )
+
+    return errores
+
+
+def _crear_usuario(datos_usuario):
+    usuario = User(username=datos_usuario['rut'])
+    usuario.first_name = datos_usuario['nombre']
+    usuario.last_name = datos_usuario['apellido']
+    usuario.save()
+    return usuario
+
+
+def guardar_acta(datos_acta):
+    acta = Acta(
+        comuna=Comuna.objects.get(pk=datos_acta['geo']['comuna']),
+        memoria_historica=datos_acta.get('memoria'),
+        fecha=timezone.now(),
+    )
+
+    acta.save()
+
+    for p in datos_acta['participantes']:
+        acta.participantes.add(_crear_usuario(p))
+
+    acta.save()
+
+    for group in datos_acta['itemsGroups']:
+        for i in group['items']:
+            item = Item.objects.get(pk=i['pk'])
+            acta_item = ActaRespuestaItem(
+                acta=acta,
+                item=item,
+                categoria=i['categoria'],
+                fundamento=i.get('fundamento')
+            )
+            acta_item.save()
+
+
+def validar_acta_json(request):
+    if request.method != 'POST':
+        return (None, 'Request inválido.',)
+
+    acta = request.body.decode('utf-8')
+
+    try:
+        acta = json.loads(acta)
+    except ValueError:
+        return (None, 'Acta inválida.',)
+
+    for func_val in [validar_datos_geograficos, validar_participantes, validar_items]:
+        errores = func_val(acta)
+        if len(errores) > 0:
+            return (acta, errores,)
+
+    return (acta, [],)

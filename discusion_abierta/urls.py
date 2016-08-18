@@ -13,17 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
+from django.core.urlresolvers import reverse_lazy
 
-from actas.views import index, lista, subir, obtener_base, subir_validar, subir_confirmar
+from django.views.generic import RedirectView
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index),
-    url(r'^actas/$', lista),
-    url(r'^actas/base$', obtener_base),
-    url(r'^actas/subir/$', subir),
-    url(r'^actas/subir/validar$', subir_validar),
-    url(r'^actas/subir/confirmar$', subir_confirmar),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('actas:index'))),
+    url(r'^actas/', include('actas.urls', namespace='actas')),
 ]

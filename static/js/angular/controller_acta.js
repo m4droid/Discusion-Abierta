@@ -160,7 +160,7 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
     var confirm = $mdDialog.confirm()
       .clickOutsideToClose(true)
       .textContent('¿Estás seguro de que quieres limpiar los datos del acta?')
-      .ariaLabel('Obtener número de serie')
+      .ariaLabel('Limpiar acta')
       .targetEvent(ev)
       .ok('Limpiar')
       .cancel('Cancelar');

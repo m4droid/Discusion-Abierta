@@ -1,0 +1,7 @@
+[run]
+branch = true
+source = actas
+omit = fabfile.py,manage.py,actas/migrations/*,*/test*
+
+[html]
+directory = coverage
