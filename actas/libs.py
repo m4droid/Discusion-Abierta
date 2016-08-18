@@ -176,8 +176,13 @@ def validar_participantes(acta):
 def _validar_participante(participante, pos):
     errores = []
 
+    if type(participante) != dict:
+        errores.append('Datos del participante {0:d} inválidos.'.format(pos))
+        return errores
+
     if not verificar_rut(participante.get('rut')):
         errores.append('RUT del participante {0:d} es inválido.'.format(pos))
+        return errores
 
     nombre = participante.get('nombre')
     apellido = participante.get('apellido')
