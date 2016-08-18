@@ -11,3 +11,4 @@ class ViewsActaSubirTestCase(TestCase):
     def test_obtener_subir(self):
         response = self.client.get(reverse('actas:subir'))
         self.assertEquals(200, response.status_code)
+        self.assertIsNotNone(response.cookies.get('csrftoken'))
