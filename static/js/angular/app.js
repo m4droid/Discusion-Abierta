@@ -8,10 +8,4 @@ angular.module('DiscusionAbiertaApp', ['ngMaterial', 'LocalStorageModule'])
   .config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('{$');
     $interpolateProvider.endSymbol('$}');
-  })
-  .config(function ($mdThemingProvider) {
-    // Configure a dark theme with primary foreground yellow
-    $mdThemingProvider.theme('docs-dark', 'default')
-      .primaryPalette('yellow')
-      .dark();
   });
