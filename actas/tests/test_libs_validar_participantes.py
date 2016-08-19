@@ -3,8 +3,7 @@ from django.test import TestCase
 from django.test.testcases import TransactionTestCase
 from django.test.utils import override_settings
 
-from ..libs import validar_participantes, guardar_acta
-# from ..models import
+from ..libs import validar_participantes
 
 
 class LibsValidarParticipantesTestCase(TestCase):

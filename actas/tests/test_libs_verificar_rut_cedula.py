@@ -1,23 +1,9 @@
 # -*- coding: utf-8 -*-
-import os
-
 from django.test import TestCase
 from mock import patch, MagicMock
 
 from ..libs import verificar_rut, verificar_cedula
-
-
-def get_fixture_content(fixture_path):
-    abs_path = os.path.join(
-        os.path.dirname(os.path.realpath(__file__)),
-        'fixtures',
-        fixture_path
-    )
-
-    with open(abs_path) as file_:
-        content = file_.read()
-
-    return content
+from .base_tests import get_fixture_content
 
 
 class LibsVerificarRutTestCase(TestCase):

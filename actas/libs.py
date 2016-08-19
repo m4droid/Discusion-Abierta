@@ -210,7 +210,7 @@ def validar_cedulas_participantes(acta):
 def validar_items(acta):
     errores = []
 
-    # TODO: Validar todos los items por DB
+    items_por_responder = map(lambda i: i.pk, Item.objects.all())
 
     for group in acta['itemsGroups']:
         for i, item in enumerate(group['items']):
@@ -218,19 +218,24 @@ def validar_items(acta):
 
             if len(acta_item) != 1 or acta_item[0].nombre != item.get('nombre'):
                 errores.append(
-                    'Existen errores de validación en ítem {0:s} del grupo {1:s}.'.format(
-                        item.get('nombre').encode('utf-8'),
-                        group.get('nombre').encode('utf-8')
+                    'Existen errores de validación en ítem {0:d}.'.format(
+                        item['pk']
                     )
                 )
+                return errores
 
             if item.get('categoria') not in ['-1', '0', '1']:
                 errores.append(
-                    'No se ha seleccionado la categoría del ítem {0:s}, del grupo {1:s}.'.format(
-                        item.get('nombre').encode('utf-8'),
-                        group.get('nombre').encode('utf-8')
+                    'No se ha seleccionado la categoría del ítem {0:d}.'.format(
+                        item['pk']
                     )
                 )
+                return errores
+
+            items_por_responder.remove(int(item['pk']))
+
+    if len(items_por_responder) > 0:
+        errores.append('No se han respondido todos los items del acta.')
 
     return errores
 
