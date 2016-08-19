@@ -36,7 +36,7 @@ class Comuna(models.Model):
 
 class GrupoItems(models.Model):
     nombre = models.CharField(max_length=128)
-    descripcion = models.TextField()
+    descripcion = models.TextField(blank=True, null=True)
     orden = models.IntegerField()
 
     def __str__(self):
