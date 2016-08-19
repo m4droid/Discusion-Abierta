@@ -1,0 +1,123 @@
+[
+    {
+        "pk": 10, 
+        "model": "actas.grupoitems", 
+        "fields": {
+            "nombre": "1. OBJETIVO DE LA REFORMA A LA EDUCACI\u00d3N SUPERIOR", 
+            "orden": 1
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "actas.grupoitems", 
+        "fields": {
+            "descripcion": "\u201cLas universidades son instituciones de educaci\u00f3n superior cuya misi\u00f3n es cultivar las ciencias, las humanidades, las artes y las tecnolog\u00edas, as\u00ed como tambi\u00e9n crear, preservar y transmitir conocimiento, y formar graduados y profesionales. Corresponde a las universidades contribuir al desarrollo de la cultura y la satisfacci\u00f3n de los intereses y necesidades del pa\u00eds y sus regiones. \u00c9stas cumplen con su misi\u00f3n a trav\u00e9s de la realizaci\u00f3n de docencia, investigaci\u00f3n, creaci\u00f3n art\u00edstica, innovaci\u00f3n y vinculaci\u00f3n con el medio.\u201d", 
+            "nombre": "2. EDUCACI\u00d3N SUPERIOR Y LA UNIVERSIDAD", 
+            "orden": 2
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "actas.grupoitems", 
+        "fields": {
+            "descripcion": "\u201cEn el \u00e1mbito de la ense\u00f1anza formal, la formaci\u00f3n t\u00e9cnico profesional considera los niveles de educaci\u00f3n media de formaci\u00f3n t\u00e9cnico profesional y el nivel de educaci\u00f3n superior t\u00e9cnico profesional, as\u00ed como la modalidad de educaci\u00f3n de adultos en el nivel de educaci\u00f3n media t\u00e9cnico profesional. En el \u00e1mbito de la ense\u00f1anza no formal considera todo tipo de formaci\u00f3n orientada al mundo del trabajo. Asimismo, contempla todos aquellos mecanismos que faciliten la articulaci\u00f3n entre ambos tipos de ense\u00f1anza, permitiendo la conformaci\u00f3n de trayectorias educativas y laborales.\u201d", 
+            "nombre": "3.\tEDUCACI\u00d3N SUPERIOR Y EDUCACI\u00d3N T\u00c9CNICO-PROFESIONAL", 
+            "orden": 3
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "actas.grupoitems", 
+        "fields": {
+            "nombre": "4. SISTEMA P\u00daBLICO DE EDUCACI\u00d3N SUPERIOR", 
+            "orden": 4
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "actas.grupoitems", 
+        "fields": {
+            "nombre": "5. FINANCIAMIENTO DE LA EDUCACI\u00d3N SUPERIOR", 
+            "orden": 5
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "actas.grupoitems", 
+        "fields": {
+            "nombre": "6. ACCESO", 
+            "orden": 6
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "actas.grupoitems", 
+        "fields": {
+            "nombre": "7. ASEGURAMIENTO DE LA CALIDAD", 
+            "orden": 7
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "actas.item", 
+        "fields": {
+            "nombre": "\u00bfEst\u00e1 de acuerdo con el diagn\u00f3stico sobre el Sistema de Educaci\u00f3n Superior presentado en el mensaje del proyecto de ley?", 
+            "grupo_items": 10, 
+            "orden": 1
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "actas.item", 
+        "fields": {
+            "nombre": "\u00bfEst\u00e1 de acuerdo con la definici\u00f3n de Universidad?", 
+            "grupo_items": 11, 
+            "orden": 1
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "actas.item", 
+        "fields": {
+            "nombre": "\u00bfEst\u00e1 de acuerdo con las definiciones establecidas para los institutos profesionales y los centros de formaci\u00f3n t\u00e9cnica?", 
+            "grupo_items": 12, 
+            "orden": 1
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "actas.item", 
+        "fields": {
+            "nombre": "\u00bfEn qu\u00e9 medida est\u00e1 de acuerdo con la propuesta de Educaci\u00f3n Superior Estatal?", 
+            "grupo_items": 13, 
+            "orden": 1
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "actas.item", 
+        "fields": {
+            "nombre": "\u00bfEst\u00e1 de acuerdo con las condiciones establecidas para que el Estado financie a instituciones de educaci\u00f3n superior?", 
+            "grupo_items": 14, 
+            "orden": 1
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "actas.item", 
+        "fields": {
+            "nombre": "\u00bfEst\u00e1 de acuerdo con la propuesta de Sistema de acceso a a la Educaci\u00f3n Superior?", 
+            "grupo_items": 15, 
+            "orden": 1
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "actas.item", 
+        "fields": {
+            "nombre": "\u00bfEst\u00e1 de acuerdo con la propuesta de sistema de aseguramiento de la calidad?", 
+            "grupo_items": 16, 
+            "orden": 1
+        }
+    }
+]
