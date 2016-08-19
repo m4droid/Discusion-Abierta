@@ -112,3 +112,8 @@
   font-weight: 200;
   font-size: 0.85em;
 }
+
+.grupoitems_encabezado .md-toolbar-tools {
+  height: inherit;
+  max-height: inherit;
+}
