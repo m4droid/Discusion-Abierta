@@ -152,6 +152,7 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
       }).then(function (response) {
         $scope.acta = response.data;
       });
+      console.log($scope.acta)
     }
   };
 
@@ -201,8 +202,41 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
     ,{"name": 'Facultad de Filosofía y Humanidades'}
     ,{"name": 'Instituto de Asuntos Públicos'}
     ,{"name": 'Instituto de Nutrición y Tecnología de los Alimentos'}]
+  $scope.propuestas=[{"propuesta":"¿Cuáles debieran ser los objetivos de una Reforma a la Educación Superior?\n"},
+    {
+      "propuesta": "¿Qué funciones debe cumplir unainstitución para ser considerada una universidad?\n¿Cuál debiese ser la relación entre la educación superior y la investigación?\n ¿Debiese haber alguna alusión específica a las universidades regionales?\n",
+    },
+    {
+      "propuesta": "¿Qué principios deben guiar un sistema de educación superior?\n¿Cuál debe ser la relación entre la educación técnico profesional y la universitaria?\n¿Cuál debiese ser la relación entre la educación técnico-profesional y la investigación?\n¿Debiese haber alguna alusión específica a las instituciones regionales?\n",
+    },
+    {
+      "propuesta": "¿Qué debiera entender por institución pública de educación superior?\n¿Qué relación deben tener las Universidades estatales con el Estado?\n¿Cuáles son los principales desafíos institucionales de expandir la matrícula estatal?\n¿Qué funciones y características debiese tener un sistema de universidades y CFT estatales?\n¿Cuál debiese ser el rol de la Universidad de Chile en la construcción y funcionamiento del sistema estatal de educación superior?\n",
+    },
+    {
+      "propuesta": "¿Bajo qué condiciones se justifica que el Estado financie a instituciones de la educación superior?\n¿Debe este financiamiento ser distinto para instituciones estatales y privadas?\n¿Deben financiarse de igual manera todas las labores que realizan las universidades?\n¿Cuál debiera ser el mecanismo definanciamiento de la investigación y la creación artística?\n¿El financiamiento debiese considerar tanto aportes a instituciones como a estudiantes?\n",
+    },
+    {
+      "propuesta": "¿Quiénes deberían ingresar a lau niversidad?\n¿Qué elementos debería considerar y priorizar un eventual mecanismo de acceso general a todas las universidades?\n",
+    },
+    {
+      "propuesta": "¿Es necesario evaluar la calidad?\n¿Cómo se debe evaluar la calidad?\n¿Deben todas las universidades cumplir los mismos estándares?\n¿Debe relacionarse la calidad al financiamiento?\n",
+    }
+    ,
+    {
+      "propuesta": "¿Se debe exigir las mismas formas de gobierno a instituciones privadas y estatales?\n¿Qué rol juegan los distintos estamentos en dichas formas de gobierno?\n¿Qué nivel de autonomía deberían tener las universidades?\n¿Debería establecerse alguna diferencia entre universidades estatales y privadas?\n¿Qué mecanismos de rendición de cuentas deben tener las universidades con el Estado?\n ¿Debiesen diferenciarse estos mecanismos según la universidad sea estatal o privada?\n",
+    },
+    {
+      "propuesta": "¿Qué cambios institucionales son necesarios para un nuevo sistema de educación superior?\n",
+    },
+    {
+      "propuesta": "¿Qué mecanismos de transparenciase requieren para que las universidades efectivamente desarrollen las actividades encomendadas por ley?\n",
+    }
+    ,{
+      "propuesta": "¿Debe la ley referirse más detalladamente a los mecanismos de promoción académica y funcionaria enlas instituciones estatales de educación superior?\n¿Debería incluirse alguna referencia alas condiciones laborales de los funcionarios de las instituciones estatales de educación superior?\n¿Debe la ley referirse a este tipo de mecanismos en instituciones privadas?\n",
+    }]
   $scope.tipoEncuentro = [{"name":'Encuentro autoconvocado'},{"name":'Encuentro gremial'},{"name":'Encuentro transversal'},{"name":'Encuentro facultad'}]
   cargarWatchersGeo();
+
 
   $http({
     method: 'GET',

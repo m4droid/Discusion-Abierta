@@ -7,7 +7,7 @@
 }
 
 .item {
-  height: 145px;
+  height: 200px;
 }
 
 .item:first-child {
@@ -49,8 +49,8 @@
 
 .item .categoria {
   margin: 0;
-  padding: 5px 0 0 0;
-  height: calc(100% - 5px);
+  padding: 6px 0 0 0;
+  height: calc(100% - 10px);
   background-color: #ccc;
 }
 

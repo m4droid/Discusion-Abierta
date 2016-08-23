@@ -128,7 +128,7 @@
                 <div class="md-toolbar-tools">
                   <div>
                     <div class="nombre">{$ itemGroup.nombre $}</div>
-                    <div class="descripcion" ng-show="itemGroup.descripcion">{$ itemGroup.descripcion $}</div>
+                    <div class="descripcion" ng-show="itemGroup.descripcion"></div>
                   </div>
                     <span flex=""></span>
                     <span ng-class="{expandCollapse:true, active:data.expanded}"></span>
@@ -162,7 +162,7 @@
               </div>
               <div class="item" layout="row">
                 <div class="container_nombre" flex=25>
-                  <textarea class="nombre" ng-model="item.nombre" readonly></textarea>
+                  <textarea class="nombre" ng-model="propuestas[$index].propuesta" readonly></textarea>
                 </div>
                 <div class="container_fundamento" flex>
                   <textarea class="fundamento" ng-model="item.fundamento"></textarea>
@@ -176,7 +176,7 @@
                 <div class="md-toolbar-tools">
                   <div>
                     <div class="nombre">Complementos</div>
-                    <div class="descripcion">Este espacio está destinado para realizar un aporte a la memoria histórica de este proceso. Podrá ser completado con ideas, propuestas y visiones sobre la educación de nuestro país para las futuras generaciones.</div>
+                    <div class="descripcion">Puede ser completado con ideas, propuestas y visiones sobre la educación de nuestro país para las futuras generaciones.</div>
                   </div>
                 </div>
               </md-toolbar>
