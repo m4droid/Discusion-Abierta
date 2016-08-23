@@ -16,12 +16,27 @@
             <h3>Datos geográficos</h3>
             <div layout-xs="column" layout-gt-xs="row">
               <md-input-container flex>
-                <label>Región</label>
+                <label>Facultad/Instituto</label>
                 <md-select ng-model="acta.geo.region" required>
-                  <md-option ng-repeat="region in regiones" ng-value="region.pk">{$ region.fields.nombre $}</md-option>
+                  <md-option ng-repeat="region in facultades" ng-value="region.name">{$ region.name $}</md-option>
                 </md-select>
               </md-input-container>
               <md-input-container flex>
+                <label>Tipo de encuentro</label>
+                <md-select ng-model="acta.geo.provincia" required>
+                  <md-option ng-repeat="provincia in tipoEncuentro" ng-value="provincia.name">{$ provincia.name $}</md-option>
+                </md-select>
+              </md-input-container>
+              <div layout="row">
+                <md-input-container class="datepicker-align">
+
+
+                </md-input-container>
+                <md-datepicker ng-model="ts"></md-datepicker>
+
+              </div>
+
+              <!--<md-input-container flex>
                 <label>Provincia</label>
                 <md-select ng-model="acta.geo.provincia" required>
                   <md-option ng-repeat="provincia in provinciasFiltradas" ng-value="provincia.pk">{$ provincia.fields.nombre $}</md-option>
@@ -33,6 +48,7 @@
                   <md-option ng-repeat="comuna in comunasFiltradas" ng-value="comuna.pk">{$ comuna.fields.nombre $}</md-option>
                 </md-select>
               </md-input-container>
+            -->
             </div>
             <div layout="column" class="md-inline-form" style="padding: 50px;">
               <md-content class="centrar_texto">
@@ -42,14 +58,41 @@
           </md-content>
         </md-tab>
         <md-tab label="2. Participantes">
+
           <md-content class="md-padding">
             <h2 class="md-display-2">
-              <span>Información de los {$ acta.participantes.length $} participantes</span>
+              <span>Información de los {$ acta.participantes.length+1 $} participantes</span>
               <md-button class="md-fab md-mini" aria-label="Agregar participante" ng-click="agregarParticipante()">+</md-button>
             </h2>
+            <md-content class="md-padding">
+              <h3>
+                <span>Información del encargado</span></h3>
+              <div layout-xs="column" layout-gt-xs="row">
+                <md-input-container flex>
+                  <label>Nombre</label>
+                  <input ng-model="participante.nombre" required />
+                </md-input-container>
+                <md-input-container flex>
+                  <label>Apellido</label>
+                  <input ng-model="participante.apellido" required />
+                </md-input-container>
+                <md-input-container flex>
+                  <label>RUT</label>
+                  <input ng-model="participante.rut" required />
+                </md-input-container>
+                <md-input-container flex>
+                  <label>Email</label>
+                  <input ng-model="participante.serie_cedula" required />
+                </md-input-container>
+                <md-input-container flex>
+                  <label>Numero de cedula</label>
+                  <input ng-model="participante.serie_cedula" required />
+                </md-input-container>
+              </div>
+            </md-content>
             <div layout-xs="column" layout-gt-xs="row" ng-repeat="participante in acta.participantes">
               <md-input-container class="centrar_texto" flex flex-sm-xs=5>
-                <div style="color: #ccc; margin-top: 8px;">{$ ($index + 1) $}.</div>
+                <div style="color: #ccc; margin-top: 8px;">{$ ($index + 2) $}.</div>
               </md-input-container>
               <md-input-container flex>
                 <label>Nombre</label>
@@ -64,7 +107,7 @@
                 <input ng-model="participante.rut" required />
               </md-input-container>
               <md-input-container flex>
-                <label>Número de serie de cédula</label>
+                <label>Email</label>
                 <input ng-model="participante.serie_cedula" required />
               </md-input-container>
               <md-input-container class="centrar_texto" flex flex-sm-xs=10>
@@ -80,39 +123,59 @@
         </md-tab>
         <md-tab label="3. Preguntas">
           <md-content layout-gt-sm="column">
-            <div ng-repeat="itemGroup in acta.itemsGroups" style="background-color: #ccc;">
-              <md-toolbar class="grupoitems_encabezado">
+            <div  class="md-accordion" ng-repeat="itemGroup in acta.itemsGroups" style="background-color: #ccc;">
+              <md-toolbar class="grupoitems_encabezado" ng-init="data.expanded = false" ng-click="data.expanded = !data.expanded">
                 <div class="md-toolbar-tools">
                   <div>
                     <div class="nombre">{$ itemGroup.nombre $}</div>
                     <div class="descripcion" ng-show="itemGroup.descripcion">{$ itemGroup.descripcion $}</div>
                   </div>
+                    <span flex=""></span>
+                    <span ng-class="{expandCollapse:true, active:data.expanded}"></span>
                 </div>
+
               </md-toolbar>
+                <div ng-class="{dataContent:true, activeContent:data.expanded}">
               <div class="grupoitems_item_encabezado" layout="row">
-                <div class="par" flex="25">VALOR / PRINCIPIO</div>
-                <div class="impar centrar_texto" flex-xs="40" flex-sm="30" flex-md="20" flex-gt-md="15">CATEGORÍA</div>
+                <div class="par" flex="25">PREGUNTA</div>
+                <div class="impar centrar_texto" flex-xs="40" flex-sm="30" flex-md="20" flex-gt-md="15">RESPUESTA</div>
                 <div class="par" flex>FUNDAMENTO</div>
               </div>
               <div class="item" ng-repeat="item in itemGroup.items" layout="row">
                 <div class="container_nombre" flex=25>
                   <textarea class="nombre" ng-model="item.nombre" readonly></textarea>
                 </div>
-                <md-radio-group class="categoria" layout="column" ng-model="item.categoria" flex-xs="40" flex-sm="30" flex-md="20" flex-gt-md="15">
-                  <md-radio-button value="1" class="par">Acuerdo</md-radio-button>
-                  <md-radio-button value="0" class="impar">Neutral</md-radio-button>
-                  <md-radio-button value="-1" class="par">Desacuerdo</md-radio-button>
+                <md-radio-group class="categoria" layout="column" ng-model="item.categoria" flex-xs="45" flex-sm="35" flex-md="25" flex-gt-md="15">
+                  <md-radio-button value="2" class="impar">Muy  de acuerdo</md-radio-button>
+                  <md-radio-button value="1" class="par">De acuerdo</md-radio-button>
+                  <md-radio-button value="0" class="impar">Ni de acuerdo ni en desacuerdo</md-radio-button>
+                  <md-radio-button value="0" class="par">En desacuerdo</md-radio-button>
+                  <md-radio-button value="-2" class="impar">Muy Desacuerdo</md-radio-button>
                 </md-radio-group>
                 <div class="container_fundamento" flex>
                   <textarea class="fundamento" ng-model="item.fundamento"></textarea>
                 </div>
               </div>
+              <div class="grupoitems_item_encabezado" layout="row">
+                <div class="par" flex="25">PROPUESTA</div>
+                <div class="par" flex>FUNDAMENTO</div>
+              </div>
+              <div class="item" layout="row">
+                <div class="container_nombre" flex=25>
+                  <textarea class="nombre" ng-model="item.nombre" readonly></textarea>
+                </div>
+                <div class="container_fundamento" flex>
+                  <textarea class="fundamento" ng-model="item.fundamento"></textarea>
+                </div>
+              </div>
             </div>
-            <div>
+                </div>
+
+              <div>
               <md-toolbar class="grupoitems_encabezado">
                 <div class="md-toolbar-tools">
                   <div>
-                    <div class="nombre">Memoria histórica</div>
+                    <div class="nombre">Complementos</div>
                     <div class="descripcion">Este espacio está destinado para realizar un aporte a la memoria histórica de este proceso. Podrá ser completado con ideas, propuestas y visiones sobre la educación de nuestro país para las futuras generaciones.</div>
                   </div>
                 </div>

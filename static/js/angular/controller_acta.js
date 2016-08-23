@@ -174,11 +174,34 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   $scope.acta = {
     geo: {}
   };
-
+  $scope.toggleView = function(ary, data, index){
+    for(var i=0; i<ary.length; i++){
+      if(i!=index) { ary[i].expanded=false; }
+      else { data.expanded=!data.expanded; }
+    }
+  }
   $scope.regiones = [];
   $scope.provincias = [];
   $scope.comunas = [];
-
+  $scope.facultades =[{"name":'Facultad de Arquitectura y Urbanismo'}
+    ,{"name": 'Facultad de Ciencias'}
+    ,{"name": 'Facultad de Ciencias Químicas y Farmacéuticas'}
+    ,{"name": 'Facultad de Derecho'}
+    ,{"name": 'Facultad de Medicina'}
+    ,{"name": 'Instituto de Comunicación e Imagen'}
+    ,{"name": 'Facultad de Artes'}
+    ,{"name": 'Facultad de Ciencias Físicas y Matemáticas'}
+    ,{"name": 'Facultad de Ciencias Sociales'}
+    ,{"name": 'Facultad de Economía y Negocios'}
+    ,{"name": 'Facultad de Odontología'}
+    ,{"name": 'Instituto de Estudios Internacionales'}
+    ,{"name": 'Facultad de Ciencias Agronómicas'}
+    ,{"name": 'Facultad de Ciencias Forestales y de la Conservación de la Naturaleza'}
+    ,{"name": 'Facultad de Ciencias Veterinarias y Pecuarias'}
+    ,{"name": 'Facultad de Filosofía y Humanidades'}
+    ,{"name": 'Instituto de Asuntos Públicos'}
+    ,{"name": 'Instituto de Nutrición y Tecnología de los Alimentos'}]
+  $scope.tipoEncuentro = [{"name":'Encuentro autoconvocado'},{"name":'Encuentro gremial'},{"name":'Encuentro transversal'},{"name":'Encuentro facultad'}]
   cargarWatchersGeo();
 
   $http({
