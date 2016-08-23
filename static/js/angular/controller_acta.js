@@ -184,6 +184,7 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   $scope.regiones = [];
   $scope.provincias = [];
   $scope.comunas = [];
+  $scope.estamentos=[{"name":'Academico'},{"name":'Funcionario'},{"name":'Estudiante'},{"name":'Egresado'}];
   $scope.facultades =[{"name":'Facultad de Arquitectura y Urbanismo'}
     ,{"name": 'Facultad de Ciencias'}
     ,{"name": 'Facultad de Ciencias Químicas y Farmacéuticas'}

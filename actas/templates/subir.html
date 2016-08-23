@@ -88,6 +88,12 @@
                   <label>Numero de cedula</label>
                   <input ng-model="participante.serie_cedula" required />
                 </md-input-container>
+                  <md-input-container flex>
+                      <label>Estamento</label>
+                      <md-select ng-model="participante.estamento" required>
+                          <md-option ng-repeat="estamento in estamentos" >{$ estamento.name $}</md-option>
+                      </md-select>
+                  </md-input-container>
               </div>
             </md-content>
             <div layout-xs="column" layout-gt-xs="row" ng-repeat="participante in acta.participantes">
@@ -110,6 +116,13 @@
                 <label>Email</label>
                 <input ng-model="participante.serie_cedula" required />
               </md-input-container>
+                <md-input-container flex>
+                    <label>Estamento</label>
+                    <md-select ng-model="participante.estamento" required>
+                        <md-option ng-repeat="estamento in estamentos" ng-value="estamento.name">{$ estamento.name $}</md-option>
+                    </md-select>
+                </md-input-container>
+
               <md-input-container class="centrar_texto" flex flex-sm-xs=10>
                 <md-button class="md-fab md-mini" aria-label="Quitar participante" ng-click="quitarParticipante($index)">-</md-button>
               </md-input-container>
