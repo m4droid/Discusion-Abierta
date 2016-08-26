@@ -10,15 +10,19 @@
   <div layout="column" class="md-inline-form">
     <md-content>
       <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab label="1. Sobre el encuentro">
+      <md-tab label="1. Presentacion">
+      </md-tab>
+      <md-tab label="2. Instructivo">
+      </md-tab>
+      <md-tab label="3. Sobre el encuentro">
           <md-content class="md-padding">
             <h2 class="md-display-2">Información del encuentro</h2>
             <h3>Datos geográficos</h3>
             <div layout-xs="column" layout-gt-xs="row">
               <md-input-container flex>
-                <label>Facultad/Instituto</label>
+                <label>Campus</label>
                 <md-select ng-model="acta.geo.region" required>
-                  <md-option ng-repeat="region in facultades" ng-value="region.name">{$ region.name $}</md-option>
+                  <md-option ng-repeat="region in campus" ng-value="region.name">{$ region.name $}</md-option>
                 </md-select>
               </md-input-container>
               <md-input-container flex>
@@ -52,12 +56,12 @@
             </div>
             <div layout="column" class="md-inline-form" style="padding: 50px;">
               <md-content class="centrar_texto">
-                <md-button class="md-raised md-warn" aria-label="Subir acta" ng-click="limpiarActa($event)">Limpiar acta</md-button>
+                <md-button class="md-raised md-primary" aria-label="Sigu" ng-click="limpiarActa($event)">Siguiente</md-button>
               </md-content>
             </div>
           </md-content>
         </md-tab>
-        <md-tab label="2. Participantes">
+        <md-tab label="4. Participantes">
 
           <md-content class="md-padding">
             <h2 class="md-display-2">
@@ -82,7 +86,7 @@
                 </md-input-container>
                 <md-input-container flex>
                   <label>Email</label>
-                  <input ng-model="participante.serie_cedula" required />
+                  <input ng-model="participante.email" required />
                 </md-input-container>
                 <md-input-container flex>
                   <label>Numero de cedula</label>
@@ -94,6 +98,13 @@
                           <md-option ng-repeat="estamento in estamentos" >{$ estamento.name $}</md-option>
                       </md-select>
                   </md-input-container>
+                  <md-input-container flex>
+                      <label>Organismo</label>
+                      <md-select ng-model="participante.organismo" required>
+                          <md-option ng-repeat="organismo in organismos" >{$ organismo.name $}</md-option>
+                      </md-select>
+                  </md-input-container>
+
               </div>
             </md-content>
             <div layout-xs="column" layout-gt-xs="row" ng-repeat="participante in acta.participantes">
@@ -114,7 +125,7 @@
               </md-input-container>
               <md-input-container flex>
                 <label>Email</label>
-                <input ng-model="participante.serie_cedula" required />
+                <input ng-model="participante.email" required />
               </md-input-container>
                 <md-input-container flex>
                     <label>Estamento</label>
@@ -122,6 +133,12 @@
                         <md-option ng-repeat="estamento in estamentos" ng-value="estamento.name">{$ estamento.name $}</md-option>
                     </md-select>
                 </md-input-container>
+                <md-input-container flex>
+                      <label>Organismo</label>
+                      <md-select ng-model="participante.organismo" required>
+                          <md-option ng-repeat="organismo in organismos" >{$ organismo.name $}</md-option>
+                      </md-select>
+                  </md-input-container>
 
               <md-input-container class="centrar_texto" flex flex-sm-xs=10>
                 <md-button class="md-fab md-mini" aria-label="Quitar participante" ng-click="quitarParticipante($index)">-</md-button>
@@ -129,12 +146,12 @@
             </div>
             <div layout="column" class="md-inline-form" style="padding: 50px;">
               <md-content class="centrar_texto">
-                <md-button class="md-raised md-warn" aria-label="Subir acta" ng-click="limpiarActa($event)">Limpiar acta</md-button>
+                <md-button class="md-raised md-primary" aria-label="Subir propuesta" ng-click="mdTabsCtrl.nextPage()">Siguiente</md-button>
               </md-content>
             </div>
           </md-content>
         </md-tab>
-        <md-tab label="3. Preguntas">
+        <md-tab label="5. Temas">
           <md-content layout-gt-sm="column">
             <div  class="md-accordion" ng-repeat="itemGroup in acta.itemsGroups" style="background-color: #ccc;">
               <md-toolbar class="grupoitems_encabezado" ng-init="data.expanded = false" ng-click="data.expanded = !data.expanded">
@@ -147,8 +164,59 @@
                     <span ng-class="{expandCollapse:true, active:data.expanded}"></span>
                 </div>
 
-              </md-toolbar>
+              </md-toolbar>              
                 <div ng-class="{dataContent:true, activeContent:data.expanded}">
+              <div class="md-accordion" ng-repeat="contextualizacion in contextualizaciones[$index]">
+                <md-toolbar ng-init="contextualizacion.expanded = false" ng-click="contextualizacion.expanded = !contextualizacion.expanded">
+                  <div class="md-toolbar-tools" height="auto">
+                    <div>
+                    <div class="nombre">Contextualizacion</div>
+                    
+                  </div>
+                    <span flex=""></span>
+                    <span ng-class="{expandCollapse:true, active:contextualizacion.expanded}"></span> 
+                  </div>
+                </md-toolbar>
+                <div ng-class="{dataContent:true, activeContent:contextualizacion.expanded}">
+                    
+                    <md-content flex layout-padding>
+    <p>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare, cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.</p>
+    <p>
+Facete delenit argumentum cum at. Pro rebum nostrum contentiones ad. Mel exerci tritani maiorum at, mea te audire phaedrum, mel et nibh aliquam. Malis causae equidem vel eu. Noster melius vis ea, duis alterum oporteat ea sea. Per cu vide munere fierent.
+    </p>
+    <p>
+Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei. In vel posse movet, ut convenire referrentur eum, ceteros singulis intellegam eu sit.
+    </p>
+    <p>
+Sit saepe quaestio reprimique id, duo no congue nominati, cum id nobis facilisi. No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum. Vel cu luptatum signiferumque, mel eu brute nostro senserit. Blandit euripidis consequat ex mei, atqui torquatos id cum, meliore luptatum ut usu. Cu zril perpetua gubergren pri. Accusamus rationibus instructior ei pro, eu nullam principes qui, reque justo omnes et quo.
+    </p>
+    <p>
+Sint unum eam id. At sit fastidii theophrastus, mutat senserit repudiare et has. Atqui appareat repudiare ad nam, et ius alii incorrupte. Alii nullam libris his ei, meis aeterno at eum. Ne aeque tincidunt duo. In audire malorum mel, tamquam efficiantur has te.
+    </p>
+    <p>
+Qui utamur tacimates quaestio ad, quod graece omnium ius ut. Pri ut vero debitis interpretaris, qui cu mentitum adipiscing disputationi. Voluptatum mediocritatem quo ut. Fabulas dolorem ei has, quem molestie persequeris et sit.
+    </p>
+    <p>
+Est in vivendum comprehensam conclusionemque, alia cetero iriure no usu, te cibo deterruisset pro. Ludus epicurei quo id, ex cum iudicabit intellegebat. Ex modo deseruisse quo, mel noster menandri sententiae ea, duo et tritani malorum recteque. Nullam suscipit partiendo nec id, indoctum vulputate per ex. Et has enim habemus tibique. Cu latine electram cum, ridens propriae intellegat eu mea.
+    </p>
+    <p>
+Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.
+    </p>
+    <p>
+Qui utamur tacimates quaestio ad, quod graece omnium ius ut. Pri ut vero debitis interpretaris, qui cu mentitum adipiscing disputationi. Voluptatum mediocritatem quo ut. Fabulas dolorem ei has, quem molestie persequeris et sit.
+    </p>
+    <p>
+Est in vivendum comprehensam conclusionemque, alia cetero iriure no usu, te cibo deterruisset pro. Ludus epicurei quo id, ex cum iudicabit intellegebat. Ex modo deseruisse quo, mel noster menandri sententiae ea, duo et tritani malorum recteque. Nullam suscipit partiendo nec id, indoctum vulputate per ex. Et has enim habemus tibique. Cu latine electram cum, ridens propriae intellegat eu mea.
+    </p>
+    <p>
+Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.
+    </p>
+  </md-content>
+                    
+
+                </div>
+              </div>
+
               <div class="grupoitems_item_encabezado" layout="row">
                 <div class="par" flex="25">PREGUNTA</div>
                 <div class="impar centrar_texto" flex-xs="40" flex-sm="30" flex-md="20" flex-gt-md="15">RESPUESTA</div>
@@ -170,8 +238,8 @@
                 </div>
               </div>
               <div class="grupoitems_item_encabezado" layout="row">
-                <div class="par" flex="25">PROPUESTA</div>
-                <div class="par" flex>FUNDAMENTO</div>
+                <div class="par" flex="25">PREGUNTA</div>
+                <div class="par" flex>PROPUESTA</div>
               </div>
               <div class="item" layout="row">
                 <div class="container_nombre" flex=25>
@@ -201,8 +269,8 @@
             </div>
             <div layout="column" class="md-inline-form" style="padding: 50px;">
               <md-content class="centrar_texto">
-                <md-button class="md-raised md-warn" aria-label="Subir acta" ng-click="limpiarActa($event)">Limpiar acta</md-button>
-                <md-button class="md-raised md-primary" aria-label="Subir acta" ng-click="validarActa($event)" ng-disabled="noValidar">Enviar acta</md-button>
+                <md-button class="md-raised md-secondary" aria-label="Subir propuesta" ng-click="mdTabsCtrl.nextPage()">Previsualizar</md-button>
+                <md-button class="md-raised md-primary" aria-label="Subir propuesta" ng-click="validarActa($event)" ng-disabled="noValidar">Enviar propuesta</md-button>
               </md-content>
             </div>
           </md-content>
