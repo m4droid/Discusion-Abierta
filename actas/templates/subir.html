@@ -179,7 +179,7 @@
                 </md-toolbar>
                 <div ng-class="{dataContent:true, activeContent:contextualizacion.expanded}">
                     
-                    <md-content flex layout-padding ng-bind-html="contextualizaciones[0][0].data | html ">  </md-content>
+                    <md-content flex layout-padding ng-bind-html="contextualizacion.data | html "></md-content>
                     
 
                 </div>
@@ -187,19 +187,19 @@
 
               <div class="grupoitems_item_encabezado" layout="row">
                 <div class="par" flex="25">PREGUNTA</div>
-                <div class="impar centrar_texto" flex-xs="40" flex-sm="30" flex-md="20" flex-gt-md="15">RESPUESTA</div>
+                <div class="impar centrar_texto" flex="25">RESPUESTA</div>
                 <div class="par" flex>FUNDAMENTO</div>
               </div>
               <div class="item" ng-repeat="item in itemGroup.items" layout="row">
                 <div class="container_nombre" flex=25>
                   <textarea class="nombre" ng-model="item.nombre" readonly></textarea>
                 </div>
-                <md-radio-group class="categoria" layout="column" ng-model="item.categoria" flex-xs="45" flex-sm="35" flex-md="25" flex-gt-md="15">
-                  <md-radio-button value="2" class="impar">Muy  de acuerdo</md-radio-button>
-                  <md-radio-button value="1" class="par">De acuerdo</md-radio-button>
-                  <md-radio-button value="0" class="impar">Ni de acuerdo ni en desacuerdo</md-radio-button>
-                  <md-radio-button value="-1" class="par">En desacuerdo</md-radio-button>
-                  <md-radio-button value="-2" class="impar">Muy Desacuerdo</md-radio-button>
+                <md-radio-group class="categoria" layout="column" ng-model="item.categoria" flex="25">
+                  <md-radio-button value="2" class="impar">Todos estamos de acuerdo</md-radio-button>
+                  <md-radio-button value="1" class="par"> La mayoría está de acuerdo</md-radio-button>
+                  <md-radio-button value="0" class="impar">No hay acuerdo de mayoría</md-radio-button>
+                  <md-radio-button value="-1" class="par">La mayoría está en desacuerdo</md-radio-button>
+                  <md-radio-button value="-2" class="impar">Todos estamos en desacuerdo</md-radio-button>
                 </md-radio-group>
                 <div class="container_fundamento" flex>
                   <textarea class="fundamento" ng-model="item.fundamento"></textarea>
