@@ -5,6 +5,13 @@
 
 ### Instrucciones
 
+##### 0. CREAR VIRTUALENV (CON VIRTUALENVWRAPPER)
+	# Nuevo ambiente
+	mkvirtualenv discusion
+
+	# Existente
+	workon discusion
+
 ##### 1. COPIAR ARCHIVO DE CONFIGURACION
 	# Linux / OS X
     cp discusion_abierta/settings.py{.default,}
@@ -22,5 +29,5 @@
 ##### 4. CARGAR FIXTURES
     python manage.py loaddata regiones provincias comunas
 
-##### 5. RUN WEB SERVICE
+##### 5. EJECUTAR SERVICIO WEB
     python manage.py runserver
