@@ -2,7 +2,8 @@
 
 var LOCALSTORAGE_ACTA_KEY = 'acta';
 
-angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $http, $mdDialog, localStorageService) {
+var app =angular.module('DiscusionAbiertaApp');
+app.controller('ActaCtrl', function ($scope, $http, $mdDialog, localStorageService) {
 
   $scope.agregarParticipante = function () {
     if ($scope.acta.participantes.length < $scope.acta.max_participantes) {
@@ -236,7 +237,7 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
       "propuesta": "¿Debe la ley referirse más detalladamente a los mecanismos de promoción académica y funcionaria enlas instituciones estatales de educación superior?\n¿Debería incluirse alguna referencia alas condiciones laborales de los funcionarios de las instituciones estatales de educación superior?\n¿Debe la ley referirse a este tipo de mecanismos en instituciones privadas?\n",
     }]
   $scope.tipoEncuentro = [{"name":'Encuentro autoconvocado'},{"name":'Encuentro gremial'},{"name":'Encuentro transversal'},{"name":'Encuentro facultad'}]
-  $scope.contextualizaciones =[[{"data" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu tincidunt quam, at condimentum massa. Phasellus dignissim mauris non massa sodales laoreet. Nunc suscipit orci at felis egestas feugiat. Donec non diam at ex egestas hendrerit suscipit sit amet magna. Mauris at auctor nibh. Aenean cursus nibh malesuada ultricies pharetra. Suspendisse eros orci, tristique sed lacus vitae, lobortis ornare risus. Nam volutpat iaculis quam, at vehicula lorem vestibulum non. Pellentesque maximus nisi quis massa blandit gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Suspendisse ut egestas eros. Praesent volutpat, tortor at interdum condimentum, nisl lacus eleifend velit, ut dignissim sapien nibh ac eros. Sed porttitor rutrum lorem.\nIn hac habitasse platea dictumst. Phasellus id tempus sapien. Nulla a lacinia tellus. In facilisis facilisis ipsum auctor convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lectus diam, quis commodo lacus molestie pharetra. Pellentesque vel urna ultrices, hendrerit nulla vitae, ultricies nulla."}],
+  $scope.contextualizaciones =[[{"data" : "El mensaje del proyecto presenta un breve diagnóstico sobre el sistema y sus objetivos:<p>Desde la reforma universitaria de 1981 la educación superior en Chile ha estado en uncontinuo tránsito pro-mercado, en donde la matrícula universitaria y técnico-profesional haaumentado explosivamente a través de la proliferación de un sinnúmero de institucionesprivadas y un estancamiento de la participación estatal en el sector. </p><p>Dicho aumento de la matrícula ha sido totalmente desregulado, con bajos estándares de calidad y además ha desembocado en un endeudamiento considerable de los estudiantes y sus familias.</p> <p>De esta manera, hoy en día no existe un sistema sino que solamente un mercado de la educación superior, donde conviven instituciones de distinta naturaleza y calidad, y en la que el carácter de lo público se ha ido diluyendo.En términos generales el proyecto busca garantizar la calidad, la equidad y la inclusión, y la pertinencia del quehacer de la educación superior. </p><p>En particular, los objetivos que el proyecto declara son:</p><p>(1) Consolidar un Sistema de Educación Superior;</p><p>(2) Dar garantías de calidad y resguardo de la fe pública;</p><p>(3) Promover la equidad e inclusión;</p><p>(4) Fortalecer la educación superior estatal;</p><p>(5) Fortalecer la formación técnico profesional</p>"}],
 [{"data" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu tincidunt quam, at condimentum massa. Phasellus dignissim mauris non massa sodales laoreet. Nunc suscipit orci at felis egestas feugiat. Donec non diam at ex egestas hendrerit suscipit sit amet magna. Mauris at auctor nibh. Aenean cursus nibh malesuada ultricies pharetra. Suspendisse eros orci, tristique sed lacus vitae, lobortis ornare risus. Nam volutpat iaculis quam, at vehicula lorem vestibulum non. Pellentesque maximus nisi quis massa blandit gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Suspendisse ut egestas eros. Praesent volutpat, tortor at interdum condimentum, nisl lacus eleifend velit, ut dignissim sapien nibh ac eros. Sed porttitor rutrum lorem.\nIn hac habitasse platea dictumst. Phasellus id tempus sapien. Nulla a lacinia tellus. In facilisis facilisis ipsum auctor convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lectus diam, quis commodo lacus molestie pharetra. Pellentesque vel urna ultrices, hendrerit nulla vitae, ultricies nulla."}],
 [{"data" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu tincidunt quam, at condimentum massa. Phasellus dignissim mauris non massa sodales laoreet. Nunc suscipit orci at felis egestas feugiat. Donec non diam at ex egestas hendrerit suscipit sit amet magna. Mauris at auctor nibh. Aenean cursus nibh malesuada ultricies pharetra. Suspendisse eros orci, tristique sed lacus vitae, lobortis ornare risus. Nam volutpat iaculis quam, at vehicula lorem vestibulum non. Pellentesque maximus nisi quis massa blandit gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Suspendisse ut egestas eros. Praesent volutpat, tortor at interdum condimentum, nisl lacus eleifend velit, ut dignissim sapien nibh ac eros. Sed porttitor rutrum lorem.\nIn hac habitasse platea dictumst. Phasellus id tempus sapien. Nulla a lacinia tellus. In facilisis facilisis ipsum auctor convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lectus diam, quis commodo lacus molestie pharetra. Pellentesque vel urna ultrices, hendrerit nulla vitae, ultricies nulla."}],
 [{"data" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu tincidunt quam, at condimentum massa. Phasellus dignissim mauris non massa sodales laoreet. Nunc suscipit orci at felis egestas feugiat. Donec non diam at ex egestas hendrerit suscipit sit amet magna. Mauris at auctor nibh. Aenean cursus nibh malesuada ultricies pharetra. Suspendisse eros orci, tristique sed lacus vitae, lobortis ornare risus. Nam volutpat iaculis quam, at vehicula lorem vestibulum non. Pellentesque maximus nisi quis massa blandit gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Suspendisse ut egestas eros. Praesent volutpat, tortor at interdum condimentum, nisl lacus eleifend velit, ut dignissim sapien nibh ac eros. Sed porttitor rutrum lorem.\nIn hac habitasse platea dictumst. Phasellus id tempus sapien. Nulla a lacinia tellus. In facilisis facilisis ipsum auctor convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lectus diam, quis commodo lacus molestie pharetra. Pellentesque vel urna ultrices, hendrerit nulla vitae, ultricies nulla."}],
@@ -289,6 +290,10 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
 {"name": 'Otros'}]
   cargarWatchersGeo();
 
+  $scope.to_trusted = function(html_code) {
+    return $sce.trustAsHtml(html_code);
+}
+
 
   $http({
     method: 'GET',
@@ -316,3 +321,9 @@ angular.module('DiscusionAbiertaApp').controller('ActaCtrl', function ($scope, $
   cargarWatchersActa();
   cargarDatos();
 });
+
+app.filter('html', ['$sce', function ($sce) { 
+    return function (text) {
+        return $sce.trustAsHtml(text);
+    };    
+}])
